@@ -23,7 +23,6 @@ umount ${DEV}2
 
 # first create partitions for XO1.0 SD card
 parted --script ${DEV} print
-read -p "I''m about to destroy data on $DEV. Hit <ctl>C to abort" ans
 
 parted --script ${DEV} mklabel msdos
 
@@ -32,6 +31,7 @@ parted --script ${DEV} set 1 boot on
 parted --script --align optimal ${DEV} unit MB 'mkpart primary ext4 61MB -1s'
 partprobe
 parted --script ${DEV} print
+sleep 10
 
 # partprobe tends to automount partitions
 umount /media/usb*
@@ -51,6 +51,10 @@ tar xfJ /root/olpc-os-builder/images/1.0/$1/$1.tree.tar.lzma -C /mnt
 cp /mnt/boot/* --no-dereference /mnt/bootpart/boot/
 echo "copy of OS to SD completed"
 
+# fetch the content local to this distribution
+cd /root
+git clone https://github.com/XSCE/xsce-local --branch xo15
+
 # fetch the XSCE playbook
 mkdir -p /mnt/opt/schoolserver
 cd /mnt/opt/schoolserver
@@ -59,11 +63,14 @@ cd xsce
 cp $SCRIPTPATH/config/kiwix.yml .
 export ANSIBLE_LOG_PATH="kiwix_install.log"
 
+
 # chroot into the new sd card and use ansible to install kiwix
 mount --bind /dev /mnt/dev
 mount --bind /proc /mnt/proc
 mount --bind /sys /mnt/sys
 chroot /mnt ansible-playbook -i ansible_hosts kiwix.yml --connection=local 
+cd /root/xsce-local
+chroot /mnt /root/xsce-local/scripts/cp-root
 umount /mnt/sys
 umount /mnt/proc
 umount /mnt/dev
@@ -75,5 +82,5 @@ cp /root/content/zims/content/wikipedia_en_for_schools_opt_2013.zim* /mnt/librar
 cp -rp /root/content/zims/index/wikipedia_en_for_schools_opt_2013* /mnt/library/zims/index/
 
 # wiktionary breaks the bank
-#cp /root/content/wiktionary_en* /library/zims/content
-#cp -rp /root/content/zims/index/wiktionary_en* /library/zims/index/
+cp /root/content/zims/content/wiktionary_es* /mnt/library/zims/content
+cp -rp /root/content/zims/index/wiktionary_es* /mnt/library/zims/index/
