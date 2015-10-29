@@ -1,0 +1,12 @@
+---
+- hosts: all
+  sudo: yes
+
+  vars_files:
+  - vars/default_vars.yml
+
+  vars:
+     kiwix_src_file: "kiwix-linux-i686.tar.bz2"
+     kiwix_src_bin_only: False
+  roles:
+      - { role: kiwix, tags: ['kiwix'] }
