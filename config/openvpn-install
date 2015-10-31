@@ -1,4 +1,0 @@
-#!/bin/bash
-mkdir -p /etc/xsce
-ansible-playbook -i ansible-hosts openvpn.yml --connection=local
-

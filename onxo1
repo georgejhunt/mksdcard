@@ -7,5 +7,14 @@ mkdir -p /opt/schoolserver
 chdir /opt/schoolserver
 git clone https://github.com/XSCE/xsce --depth 1
 
-cd xsce
-runtags download,download2
+# establish a reasonable base of installed packages
+cd /opt/schoolserver/xsce
+runtags download
+
+# run the playbooks that install things we need on the xo1
+cd /root
+git clone https://github.com/georgejhunt/mksdcard
+
+cp /root/mksdcard/config/* /opt/schoolserver/xsce
+cd /opt/schoolserver/xsce
+./xsce/xo1-install

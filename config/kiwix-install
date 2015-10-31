@@ -1,9 +1,0 @@
-#!/bin/bash
-mkdir -p /opt/schoolserver/downloads
-mkdir -p /etc/xsce
-cat < EOF >> /etc/xsce/xsce.ini
-[location]
-xsce_base = /opt/schoolserver
-xsce_dir = /opt/schoolserver/xsce
-EOF
-ansible-playbook -i ansible-hosts kiwix.yml --connection=local
