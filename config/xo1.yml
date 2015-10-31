@@ -1,0 +1,18 @@
+---
+- hosts: all
+  sudo: yes
+
+  vars_files:
+  - vars/default_vars.yml
+
+  vars:
+     openvpn_cron_enabled: False
+     openvpn_enabled: True
+     kiwix_src_file: "kiwix-linux-i686.tar.bz2"
+     kiwix_src_bin_only: False
+     kiwix_port: 80
+     kiwix_server_enabled: True
+
+  roles:
+      - { role: openvpn, tags: ['openvpn'] }
+      - { role: kiwix, tags: ['kiwix'] }
