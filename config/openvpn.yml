@@ -1,0 +1,13 @@
+---
+- hosts: all
+  sudo: yes
+
+  vars_files:
+  - vars/default_vars.yml
+
+  vars:
+     openvpn_cron_enabled: false
+     openvpn_enabled: true
+
+  roles:
+      - { role: openvpn, tags: ['openvpn'] }

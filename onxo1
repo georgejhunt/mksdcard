@@ -1,0 +1,11 @@
+#!/bin/bash -x
+# run this script after stock install of 13.2.5 to create enhanced SD card 
+
+yum install -y git ansible tree vim firefox
+
+mkdir -p /opt/schoolserver
+chdir /opt/schoolserver
+git clone https://github.com/XSCE/xsce --depth 1
+
+cd xsce
+runtags download,download2
