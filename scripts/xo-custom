@@ -1,9 +1,18 @@
-#!/bin/sh
+#!/bin/bash -x
 set -e
 LOGGING=/tmp/tmp.log
+DEVICE=/dev/sdb
 
 get_xo_model() {
-    xo_ver=`cat /proc/device-tree/mfg-data/MN`
+#    xo_ver=`cat /proc/device-tree/mfg-data/MN`
+	xo_ver=XO-1
+}
+
+check_mksdcard() {
+ 	if [ ! -d /root/mksdcard ]; then
+		echo "This script expects mksdcard to be at /root/mksdcard"
+		exit 1
+	fi
 }
 
 get_dev() {
@@ -12,7 +21,10 @@ get_dev() {
     case "$xo_ver" in
 
         "XO-1")
-        mntopts="-t jffs2 mtd0"
+				# sd card location
+            mntopts="-t ext4 ${DEVICE}2"
+            mntboot="-t ext2 ${DEVICE}1"
+        		#mntopts="-t jffs2 mtd0"
         ;;
 
         "XO-1.5" | "XO-1.5HS")
@@ -62,11 +74,11 @@ prep_chroot() {
     then
         mount --bind /mnt/xo-boot $root_path/bootpart >/dev/null 2>/dev/null
     fi
-    mount --bind /mnt/sda1 $root_path/media >/dev/null 2>/dev/null
+    mount --bind /root/mksdcard $root_path/media >/dev/null 2>/dev/null
 }
 
 do_initrd() {
-    mount /mnt/sda1 >/dev/null 2>/dev/null
+#    mount /mnt/sda1 >/dev/null 2>/dev/null
     mkdir -p /mnt/xo
     mount $mntopts /mnt/xo >/dev/null 2>/dev/null
     mkdir -p /mnt/xo-boot
@@ -234,7 +246,8 @@ chmod 777 /mnt/tmp/tmp/in_chroot.sh
 
 main() {
 #    setup_sysmounts
-    wait_dev
+  	 check_mksdcard
+#    wait_dev
     get_dev
     do_initrd
     find_chroot
@@ -259,9 +272,9 @@ main() {
     DATE=`date +%F-%H%M%S`
     cp /mnt/tmp/tmp/tmp.log /mnt/sda1/$xo_sn-$DATE.log
     umnt_sysroot
-    echo "Press enter to shutdown and then remove USB drive"
-    umount /mnt/sda1
-    read < /dev/tty1 > /dev/tty1
-    /sbin/poweroff
+#    echo "Press enter to shutdown and then remove USB drive"
+#    umount /mnt/sda1
+#    read < /dev/tty1 > /dev/tty1
+#    /sbin/poweroff
 }
 main
