@@ -1,0 +1,12 @@
+#!/bin/bash -x
+# copy the content onto SD card which has been initialized by 13.2.5_minimal.img
+
+umount /media/usb*
+mount /dev/sdb2 /mnt
+
+# copy the content files 
+mkdir -p /mnt/library/zims/content
+mkdir -p /mnt/library/zims/index
+rsync /root/content/zims/content/wikipedia_en_for_schools_opt_2013.zim* /mnt/library/zims/content
+rsync -rp /root/content/zims/index/wikipedia_en_for_schools_opt_2013* /mnt/library/zims/index/
+
