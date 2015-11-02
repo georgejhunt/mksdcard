@@ -1,7 +1,12 @@
 #!/bin/bash -x
 # run this script after stock install of 13.2.5 to create enhanced SD card 
-
-yum install -y git ansible tree vim firefox mlocate
+cp scripts/rpmfusion.repo /etc/yum.repos.d
+yum install -y git ansible tree vim firefox mlocate \
+	gstreamer1-plugins-ugly	gstreamer1-plugins-bad-free-extras \
+	gstreamer1-plugins-bad-freeworld	gstreamer1-plugins-base-tools \
+	gstreamer1-plugins-good-extra	gstreamer1-plugins-bad-free \
+	gstreamer-plugins-ugly	gstreamer-plugins-bad \
+	gstreamer-ffmpeg gstreamer1-libav
 
 mkdir -p /opt/schoolserver
 cd /opt/schoolserver
