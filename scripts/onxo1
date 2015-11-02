@@ -1,19 +1,22 @@
 #!/bin/bash -x
 # run this script after stock install of 13.2.5 to create enhanced SD card 
 
-yum install -y git ansible tree vim firefox
+yum install -y git ansible tree vim firefox mlocate
 
 mkdir -p /opt/schoolserver
-chdir /opt/schoolserver
+cd /opt/schoolserver
 git clone https://github.com/XSCE/xsce --depth 1
 
 # establish a reasonable base of installed packages
 cd /opt/schoolserver/xsce
-runtags download
+./runtags download
+./install-console
 
 # run the playbooks that install things we need on the xo1
 cd /root
 git clone https://github.com/georgejhunt/mksdcard
+git clone https://github.com/XSCE/xsce-local --branch xo15
+
 
 cp /root/mksdcard/config/* /opt/schoolserver/xsce
 cd /opt/schoolserver/xsce
