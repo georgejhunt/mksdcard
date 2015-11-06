@@ -6,13 +6,17 @@ SCRIPT=$(readlink -f $0)
 # Absolute path this script is in.
 SCRIPTPATH=`dirname $SCRIPT`
 
+cd $SCRIPTPATH
 cp ../yum/rpmfusion.repo /etc/yum.repos.d
+
+cd /root
+
 yum install -y git ansible tree vim firefox mlocate linux-firmware \
 	gstreamer1-plugins-ugly	gstreamer1-plugins-bad-free-extras \
 	gstreamer1-plugins-bad-freeworld	gstreamer1-plugins-base-tools \
 	gstreamer1-plugins-good-extra	gstreamer1-plugins-bad-free \
 	gstreamer-plugins-ugly	gstreamer-plugins-bad \
-	gstreamer-ffmpeg gstreamer1-libav
+	gstreamer-ffmpeg gstreamer1-libav httpd
 
 mkdir -p /opt/schoolserver
 cd /opt/schoolserver

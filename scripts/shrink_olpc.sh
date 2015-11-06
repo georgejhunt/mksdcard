@@ -51,7 +51,9 @@ EOF
 umount $PART
 e2fsck -f $PART
 resize2fs -M $PART
+
 resize_image auto
+umont $PART
 e2fsck -f $PART
 read -p "what is filename for this image" FILENAME
 dd if=$DEVICE of=/root/images/xo1/$FILENAME bs=512 count=$total_sectors

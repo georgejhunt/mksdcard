@@ -1,5 +1,5 @@
 #!/bin/bash -x
-# This script receives OS build number as paramater, builds 8GB SD card
+# This script receives OS build number as paramater, builds base SD card for 1.5
 
 if [ $# -ne 1 ]; then
   echo "Pass the name of OS-builder file (located in /root/images/)as first parameter"
@@ -53,34 +53,25 @@ echo "copy of OS to SD completed"
 
 # fetch the content local to this distribution
 cd /root
-git clone https://github.com/XSCE/xsce-local --branch xo15
+git clone https://github.com/XSCE/xsce-local --branch xo1
 
 # fetch the XSCE playbook
 mkdir -p /mnt/opt/schoolserver
 cd /mnt/opt/schoolserver
 git clone https://github.com/XSCE/xsce --depth 1
 cd xsce
-cp $SCRIPTPATH/config/kiwix.yml .
-export ANSIBLE_LOG_PATH="kiwix_install.log"
 
+# bypass all the interactive console stuff by copying in our own local-vars
+#  which installs, and enables the default set of capabilities for the SD1.5
 
-# chroot into the new sd card and use ansible to install kiwix
-mount --bind /dev /mnt/dev
-mount --bind /proc /mnt/proc
-mount --bind /sys /mnt/sys
-chroot /mnt ansible-playbook -i ansible_hosts kiwix.yml --connection=local 
-cd /root/xsce-local
-chroot /mnt /root/xsce-local/scripts/cp-root
-umount /mnt/sys
-umount /mnt/proc
-umount /mnt/dev
+mv  vars/local_vars.yml /vars/local_vars.save
+cp -f $SCRIPTPATH/local_vars.yml vars/
+git runansible
+if [ $? -eq 0 ]; then
+   mv - f vars/local_vars.save vars/local_vars.yml
+else
+   echo "The git playbook did not run to completion successfully"
+   echo "  Please correct, and then move vars/local_vars.save to vars/local_vars.yml"
 
-# copy the content files 
-mkdir -p /mnt/library/zims/content
-mkdir -p /mnt/library/zims/index
-cp /root/content/zims/content/wikipedia_en_for_schools_opt_2013.zim* /mnt/library/zims/content
-cp -rp /root/content/zims/index/wikipedia_en_for_schools_opt_2013* /mnt/library/zims/index/
+fi
 
-# wiktionary breaks the bank
-cp /root/content/zims/content/wiktionary_es* /mnt/library/zims/content
-cp -rp /root/content/zims/index/wiktionary_es* /mnt/library/zims/index/
