@@ -20,7 +20,7 @@ XO1 Cookbook
 * Get the new SD card image booted, and on the network (6:58)
 * Install git--"yum install -y git" (7:17)
 * Git clone https://github.com/georgejhunt/mksdcard
-* Execute mksdcard/scripts/onxo1.0.sh (9:14)
+* Execute mksdcard/scripts/onxo1.0.sh (9:14) httpd errors out--disable it (1:57)
 
 XO1.5 Cookbook
 --------------
