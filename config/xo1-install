@@ -2,4 +2,4 @@
 mkdir -p /opt/schoolserver/downloads
 mkdir -p /etc/xsce
 
-ansible-playbook -i ansible_hosts xo1.yml --connection=local
+ansible-playbook -i ansible_hosts xo1.yml --connection=local -e openvpn_enabled=True kiwix_server_enabled=True

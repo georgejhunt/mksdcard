@@ -33,9 +33,10 @@ cp /root/mksdcard/config/* /opt/schoolserver/xsce
 cd /opt/schoolserver/xsce
 ./xo1-install
 
-# run the playbooks that install things we need on the xo1
+# get the repo infor that installs files sparsely
 cd /root
 git clone https://github.com/XSCE/xsce-local --branch xo15
+./xsce-local/scripts/cp-root
 
 # establish a reasonable base of installed packages
 #cd /opt/schoolserver/xsce
