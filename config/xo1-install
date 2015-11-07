@@ -2,6 +2,4 @@
 mkdir -p /opt/schoolserver/downloads
 mkdir -p /etc/xsce
 
-# the downloading requires more /tmp than in the olpc build
-sed -i -e 's|^/tmp.*$|/tmp	/tmp	tmpfs	rw,size=200m	0	0|' /etc/fstab
 ansible-playbook -i ansible_hosts xo1.yml --connection=local

@@ -2,6 +2,13 @@
 # run this script after stock install of 13.2.5 to create enhanced SD card 
 # note to myself: This script may have been scp'd to /root as a bootstrap
 
+# the downloading requires more /tmp than in the olpc build
+grep size=200 /etc/fstab
+if [ $? -ne 0 ]; then
+		  sed -i -e 's|^/tmp.*$|/tmp	/tmp	tmpfs	rw,size=200m	0	0|' /etc/fstab
+		  sed -i -e 's|^vartmp.*$|vartmp	/vartmp	tmpfs	rw,size=200m	0	0|' /etc/fstab
+i		  reboot
+fi
 yum install -y git
 cd /root
 git clone https://github.com/georgejhunt/mksdcard
