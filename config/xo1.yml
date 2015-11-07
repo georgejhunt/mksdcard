@@ -16,3 +16,4 @@
   roles:
       - { role: openvpn, tags: ['openvpn'] }
       - { role: kiwix, tags: ['kiwix'] }
+      - { role: httpd, tags: ['httpd'] }
