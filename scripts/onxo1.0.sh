@@ -35,7 +35,7 @@ cd /opt/schoolserver/xsce
 
 # get the repo infor that installs files sparsely
 cd /root
-git clone https://github.com/XSCE/xsce-local --branch xo15
+git clone https://github.com/XSCE/xsce-local --branch xo1
 ./xsce-local/scripts/cp-root
 
 # establish a reasonable base of installed packages
