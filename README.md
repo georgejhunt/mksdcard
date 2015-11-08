@@ -5,10 +5,12 @@
 * Get the new SD card image booted, and on the network 
 * Install git--"yum install -y git" (9:25)
 * Git clone https://github.com/georgejhunt/mksdcard
-* Execute mksdcard/scripts/onxo1.0.sh (4:55) 
+* Execute mksdcard/scripts/onxo1.0.sh (9:45) 
 * This script will reboot very quickly to change the size of temp file systems.
 * Just su to root, and restart the script 
-* done (11:00)
+* done (11:15)
+* A reboot is required for all of the setup to complete.
+
 ###XO1.5 Cookbook
 --------------
 * On a linux machine, "git clone https://github.com/georgejhunt/os-builer --branch sdcard"

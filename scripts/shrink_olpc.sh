@@ -12,7 +12,7 @@ CHKDEV=`blkid|grep OLPCRoot|cut -d" " -f 1`
 echo $CHKDEV
 if [ "$CHKDEV" != "$PART:" ];then
    echo "OLPCRoot not at expected location"
-   exit 1
+   #exit 1
 fi
 
 # Automatically determine a size for the output disk image (including root
