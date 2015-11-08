@@ -7,6 +7,7 @@ grep size=200 /etc/fstab
 if [ $? -ne 0 ]; then
 		  sed -i -e 's|^/tmp.*$|/tmp	/tmp	tmpfs	rw,size=200m	0	0|' /etc/fstab
 		  sed -i -e 's|^vartmp.*$|vartmp	/vartmp	tmpfs	rw,size=200m	0	0|' /etc/fstab
+        cp /home/olpc/.bash* /root/
 		  reboot
 fi
 yum install -y git
