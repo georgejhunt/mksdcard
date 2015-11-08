@@ -17,7 +17,7 @@ XO1 Cookbook
 ------------
 * Install stock 13.2.5 from OLPC (4:21pm)
 ** This involves unzipping the image to an USB stick and doing 4 button install.(see http://wiki.laptop.org/go/Release_notes/13.2.5#XO-1_with_SD_card)
-* Get the new SD card image booted, and on the network (6:58)
+* Get the new SD card image booted, and on the network (4:40)
 * Install git--"yum install -y git" (7:17)
 * Git clone https://github.com/georgejhunt/mksdcard
 * Execute mksdcard/scripts/onxo1.0.sh (9:14) httpd errors out--disable it (1:57)
