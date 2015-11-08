@@ -11,6 +11,14 @@
 * done (11:15)
 * A reboot is required for all of the setup to complete.
 
+As an aside: 
+  If preparing to make a new distribution, do the following:
+       1. Issue the "xs-betaprep".
+       2. Put the SD card in another machine running linux
+       3. On that machine "git clone https://github.com/georgejhunt/mksdcard"
+       4. The script to execute is mkxscard/scripts/shrink_olpc.sh (this script defaults to schrinking /dev/sdb. If you are using an XO, change line 4 to "DEVICE=/dev/sda" (the USB SD card reader's device is usually /dev/sd<something>)
+       5. The script will shrink the second partition, dd it to a file, give that fine a name, and zip it up for easy downloading.
+
 ###XO1.5 Cookbook
 --------------
 * On a linux machine, "git clone https://github.com/georgejhunt/os-builer --branch sdcard"
