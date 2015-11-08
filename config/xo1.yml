@@ -19,4 +19,4 @@
 #      - { role: httpd, tags: ['httpd'] }
 
   tasks:
-      - include: admin-user.yml
+      - include: roles/xsce-admin/tasks/admin-user.yml
