@@ -27,6 +27,6 @@ XO1 Cookbook
 XO1.5 Cookbook
 --------------
 * On a linux machine, "git clone https://github.com/georgejhunt/os-builer --branch sdcard"
-* Run the os-builder: "os-builder /root/mksdcard/olpc-os-xo1.5.ini"(5:44)
+* Run the os-builder: "os-builder /root/mksdcard/olpc-os-xo1.5.ini"(5:44 --takes about 30min)
 
 

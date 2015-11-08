@@ -33,10 +33,13 @@ cp /root/mksdcard/config/* /opt/schoolserver/xsce
 cd /opt/schoolserver/xsce
 ./xo1-install
 
-# get the repo infor that installs files sparsely
+# get the repository  that installs files sparsely
 cd /root
 git clone https://github.com/XSCE/xsce-local --branch xo1
 ./xsce-local/scripts/cp-root
+# the setuid bit does not copy properly 
+chmod 4755 /usr/bin/xs-remote-on
+chmod 4755 /usr/bin/xs-remote-off
 
 # establish a reasonable base of installed packages
 #cd /opt/schoolserver/xsce
