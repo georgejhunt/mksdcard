@@ -39,7 +39,7 @@ resize_image()
 	fi
 
 	echo "Making partition of size $part_size"
-read -p "pause for verification" ans
+#read -p "pause for verification" ans
 
 	/sbin/sfdisk -S 32 -H 32 --force -uS $DEVICE <<EOF
 8192,131072,83,*
@@ -55,7 +55,8 @@ resize2fs -M $PART
 resize_image auto
 umont $PART
 e2fsck -f $PART
-read -p "what is filename for this image" FILENAME
+read -p "what is filename for this image? " FILENAME
+FILENAME=$FILENAME.img
 dd if=$DEVICE of=/root/images/xo1/$FILENAME bs=512 count=$total_sectors
 cd /root/images/xo1
 zip $FILENAME.zip $FILENAME
