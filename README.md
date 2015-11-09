@@ -1,7 +1,6 @@
 ###XO1 Cookbook
 ------------
-* Install stock 13.2.5 from OLPC (9:10)
-** This involves unzipping the image to an USB stick and doing 4 button install.(see http://wiki.laptop.org/go/Release_notes/13.2.5XO-1_with_SD_card)
+* Install stock 13.2.5 from OLPC (9:10) This involves unzipping the image to an USB stick and doing 4 button install.(see http://wiki.laptop.org/go/Release_notes/13.2.5XO-1_with_SD_card)
 * Get the new SD card image booted, and on the network 
 * Install git--"yum install -y git" (9:25)
 * Git clone https://github.com/georgejhunt/mksdcard
@@ -11,13 +10,13 @@
 * done (11:15)
 * A reboot is required for all of the setup to complete.
 
-As an aside: 
-  If preparing to make a new distribution, do the following:
-       1. Issue the "xs-betaprep".
-       2. Put the SD card in another machine running linux
-       3. On that machine "git clone https://github.com/georgejhunt/mksdcard"
-       4. The script to execute is mkxscard/scripts/shrink_olpc.sh (this script defaults to schrinking /dev/sdb. If you are using an XO, change line 4 to "DEVICE=/dev/sda" (the USB SD card reader's device is usually /dev/sd<something>)
-       5. The script will shrink the second partition, dd it to a file, give that fine a name, and zip it up for easy downloading.
+As an aside if preparing to make a new distribution, do the following::
+
+1. Issue the "xs-betaprep".
+2. Put the SD card in another machine running linux
+3. On that machine "git clone https://github.com/georgejhunt/mksdcard"
+4. The script to execute is mkxscard/scripts/shrink_olpc.sh (this script defaults to schrinking /dev/sdb. If you are using an XO, change line 4 to "DEVICE=/dev/sda" (the USB SD card reader's device is usually /dev/sd<something>)
+5. The script will shrink the second partition, dd it to a file, give that fine the name you specify, and zip it up for easy uploading and downloading.
 
 ###XO1.5 Cookbook
 --------------
