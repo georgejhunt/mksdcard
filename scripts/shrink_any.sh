@@ -53,6 +53,7 @@ last_sector=`parted -sm  $DEVICE unit s print|cut -d: -f1,3|grep $PART_DIGIT:|cu
 last=${last_sector:0:-1}
 echo "last sector: $last"
 read -p "what is filename for this image? " FILENAME
+mkdir -p /root/images/any
 dd if=$DEVICE of=/root/images/any/$FILENAME bs=512 count=$last
 cd /root/images/any
 zip $FILENAME.zip $FILENAME
