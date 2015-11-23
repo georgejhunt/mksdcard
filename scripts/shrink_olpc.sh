@@ -47,6 +47,12 @@ $ROOT_PARTITION_START_BLOCK,$part_size,,
 EOF
 }
 
+# put in a test for haveing run sysprep
+if [ -f /.olpc_configured ]; then
+  echo "/.olpc_cofigured exists. Have you run xs-sysprep? "
+  exit 1
+fi
+
 #auto_size /dev/sdb2
 umount $PART
 e2fsck -f $PART
