@@ -48,8 +48,8 @@ EOF
 }
 
 # put in a test for haveing run sysprep
-if [ -f /.olpc_configured ]; then
-  echo "/.olpc_cofigured exists. Have you run xs-sysprep? "
+if [ -f /.olpc-configured ]; then
+  echo "/.olpc-cofigured exists. Have you run xs-sysprep? "
   exit 1
 fi
 
