@@ -39,4 +39,4 @@ git clone https://github.com/XSCE/xsce-local --branch xo15
 
 cp /root/mksdcard/config/* /opt/schoolserver/xsce
 cd /opt/schoolserver/xsce
-./xsce/xo1-install
+./xo1-install

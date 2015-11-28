@@ -42,6 +42,7 @@ git clone https://github.com/XSCE/xsce-local --branch xo1
 # the setuid bit does not copy properly 
 chmod 4755 /usr/bin/xs-remote-on
 chmod 4755 /usr/bin/xs-remote-off
+gsettings set org.gnome.Epiphany restore-session-policy never
 
 # establish a reasonable base of installed packages
 #cd /opt/schoolserver/xsce
