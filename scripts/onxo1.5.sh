@@ -27,18 +27,12 @@ mkdir -p /opt/schoolserver
 cd /opt/schoolserver
 git clone https://github.com/XSCE/xsce --depth 1
 
-# establish a reasonable base of installed packages
-cd /opt/schoolserver/xsce
-./runtags download
-# the following does a restart and keeps this script from completing
-#./install-console
-
 # run the playbooks that install things we need on the xo1
 cd /root
-git clone https://github.com/georgejhunt/mksdcard
 git clone https://github.com/XSCE/xsce-local --branch xo15
 
-
-cp /root/mksdcard/config/* /opt/schoolserver/xsce
+# install up to the console so that users can select their services
 cd /opt/schoolserver/xsce
-./xo1-install
+
+# the following does a restart and keeps this script from completing
+./install-console # so just wait for the few minutes, and restart it
