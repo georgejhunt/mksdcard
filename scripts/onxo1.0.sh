@@ -43,6 +43,7 @@ git clone https://github.com/XSCE/xsce-local --branch xo1
 chmod 4755 /usr/bin/xs-remote-on
 chmod 4755 /usr/bin/xs-remote-off
 gsettings set org.gnome.Epiphany restore-session-policy never
+sed -i -e's/^Exec=.*/Exec=file:///library/index.html %U/ /usr/share/applications/epiphany.desktop
 
 # establish a reasonable base of installed packages
 #cd /opt/schoolserver/xsce

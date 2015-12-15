@@ -23,6 +23,9 @@ cd /root
 #wget http://download.unleashkids.org/xsce/downloads/os/kernel_1.5/kernel-3.3.8_xo1.5-20150718.1548.olpc.313c677.i686.rpm
 #yum -y localinstall ./kernel*
 
+gsettings set org.gnome.Epiphany restore-session-policy never
+sed -i -e's/^Exec=.*/Exec=file:///library/index.html %U/ /usr/share/applications/epiphany.desktop
+
 yum install -y git ansible tree vim firefox mlocate linux-firmware \
 	gstreamer1-plugins-ugly	gstreamer1-plugins-bad-free-extras \
 	gstreamer1-plugins-bad-freeworld	gstreamer1-plugins-base-tools \
