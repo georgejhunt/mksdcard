@@ -37,3 +37,5 @@ XO1.5
 =====
 The preference is to use OS builder to generate the base image (if gnome works on the 1.5) because I can disable the funny chroot/file layout required by Quanta, and the update in the field strategy.
 
+Three times, I've encoundered pip errors during loader process regarding __dso_handle. This time I yum removed gcc-4.7, and "yum install compat-gcc-43".
+
