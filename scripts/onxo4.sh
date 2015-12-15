@@ -20,26 +20,23 @@ cp ../yum/rpmfusion.repo /etc/yum.repos.d
 
 cd /root
 # the stock kernel does not have bridge module
-wget http://download.unleashkids.org/xsce/downloads/os/kernel_1.5/kernel-3.3.8_xo1.5-20150718.1548.olpc.313c677.i686.rpm
-yum -y localinstall ./kernel*
+#wget http://download.unleashkids.org/xsce/downloads/os/kernel_1.5/kernel-3.3.8_xo1.5-20150718.1548.olpc.313c677.i686.rpm
+#yum -y localinstall ./kernel*
 
-# gcc 7.0 does not compile cmdsrv correctly
-yum -y remove gcc
 yum install -y git ansible tree vim firefox mlocate linux-firmware \
 	gstreamer1-plugins-ugly	gstreamer1-plugins-bad-free-extras \
 	gstreamer1-plugins-bad-freeworld	gstreamer1-plugins-base-tools \
 	gstreamer1-plugins-good-extra	gstreamer1-plugins-bad-free \
 	gstreamer-plugins-ugly	gstreamer-plugins-bad \
-	gstreamer-ffmpeg gstreamer1-libav httpd compat-gcc-43
+	gstreamer-ffmpeg gstreamer1-libav httpd 
 
-gsettings set org.gnome.Epiphany restore-session-policy never
 mkdir -p /opt/schoolserver
 cd /opt/schoolserver
 git clone https://github.com/XSCE/xsce --depth 1
 
 # run the playbooks that install things we need on the xo1
-cd /root
-git clone https://github.com/XSCE/xsce-local --branch xo15
+#cd /root
+#git clone https://github.com/XSCE/xsce-local --branch xo15
 
 # install up to the console so that users can select their services
 cd /opt/schoolserver/xsce
