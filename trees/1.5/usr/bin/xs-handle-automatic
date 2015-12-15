@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Called by /etc/rc.d/rc.local and /usr/bin/sugar
+
+MODEL=`cat /proc/device-tree/mfg-data/MN`
+UUID=`cat /proc/device-tree/mfg-data/SN`
+SNIPPEDUUID=${UUID:6:11}
+FIRMWARE=`cat /proc/device-tree/openprom/model`
+FIRMWARE=`echo $FIRMWARE | sed 's/^....//' | sed 's/ .*//'`
+OS=`cat /etc/issue`
+OS=`echo $OS | sed 's/^........//' | sed 's/ .*//'`
+SUGARNAME=`su - olpc -c "gsettings get org.sugarlabs.user nick" 2>/dev/null`
+SUGARNAME=`echo $SUGARNAME | sed 's/ /_/g' | sed 's/[^-_a-zA-Z0-9]//g'`
+
+echo "$MODEL-$SNIPPEDUUID-$FIRMWARE-$OS-$SUGARNAME" > /etc/xsce/handle
+
+# The following is heavy-handed running on every boot and every Sugar launch (in an ideal world,
+# it should only be run after "xs-remote-on" was run?  But hopefully harmless when "xs-remote-off"
+# has since been run, triggering "systemctl disable openvpn@xscenet" toggle?
+
+if [ -f /etc/xsce/openvpn_allowed ]; then
+   systemctl restart openvpn@xscenet
+fi

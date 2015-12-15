@@ -1,0 +1,10 @@
+#!/bin/bash
+# part of XSCE 
+# script to turn off the browser at boot
+if [ `id -u` -ne 0 ]; then
+  echo "please become root to execute this command"
+  exit 1
+fi
+systemctl enable olpc-dm.service
+systemctl start olpc-dm.service
+rm -f /home/olpc/.browser-at-boot
