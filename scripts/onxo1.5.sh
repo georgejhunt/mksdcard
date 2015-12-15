@@ -23,6 +23,7 @@ yum install -y git ansible tree vim firefox mlocate linux-firmware \
 	gstreamer-plugins-ugly	gstreamer-plugins-bad \
 	gstreamer-ffmpeg gstreamer1-libav httpd compat-gcc-43
 
+gsettings set org.gnome.Epiphany restore-session-policy never
 mkdir -p /opt/schoolserver
 cd /opt/schoolserver
 git clone https://github.com/XSCE/xsce --depth 1
