@@ -1,0 +1,6 @@
+#!/bin/bash
+systemctl enable sshd.service
+systemctl start sshd.service
+
+cd /opt/schoolserver/xsce
+ansible-playbook -i ansible_hosts xsce-base.yml --connection=local --extra-vars  "openvpn_enabled=True kiwix_serve_enabled=True"

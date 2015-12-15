@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.org/rss/1.0/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ephy="http://gnome.org/ns/epiphany#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <channel rdf:about="file:///home/olpc/.config/epiphany/bookmarks.rdf">
+    <title>Epiphany bookmarks</title>
+    <link>http://www.gnome.org/projects/epiphany/</link>
+    <items>
+      <rdf:Seq>
+        <rdf:li rdf:resource="http://docs.fedoraproject.org/"/>
+        <rdf:li rdf:resource="http://fedoraproject.org/"/>
+        <rdf:li rdf:resource="http://ask.fedoraproject.org/"/>
+        <rdf:li rdf:resource="http://fedoramagazine.org/"/>
+        <rdf:li rdf:resource="http://planet.fedoraproject.org/"/>
+        <rdf:li rdf:resource="http://forums.fedoraforum.org/"/>
+        <rdf:li rdf:resource="http://fedoraproject.org/en/join-fedora"/>
+        <rdf:li rdf:resource="file:///usr/share/doc/HTML/fedora-release-notes/index.html"/>
+        <rdf:li rdf:resource="http://www.redhat.com/"/>
+        <rdf:li rdf:resource="http://www.jboss.org/"/>
+        <rdf:li rdf:resource="http://opensource.com/"/>
+        <rdf:li rdf:resource="http://theopensourceway.org/"/>
+        <rdf:li rdf:resource="http://www.wikipedia.org/"/>
+        <rdf:li rdf:resource="http://librivox.org/"/>
+        <rdf:li rdf:resource="http://www.openclipart.org/"/>
+        <rdf:li rdf:resource="http://www.freesound.org/"/>
+        <rdf:li rdf:resource="http://creativecommons.org/"/>
+        <rdf:li rdf:resource="file:///library/index.html"/>
+        <rdf:li rdf:resource="http://10.4.75.96:80/"/>
+        <rdf:li rdf:resource="https://10.4.74.165:80/"/>
+      </rdf:Seq>
+    </items>
+  </channel>
+  <item rdf:about="http://docs.fedoraproject.org/">
+    <title>Fedora Documentation</title>
+    <link>http://docs.fedoraproject.org/</link>
+    <dc:subject>Bookmarks Toolbar</dc:subject>
+  </item>
+  <item rdf:about="http://fedoraproject.org/">
+    <title>Fedora Project</title>
+    <link>http://fedoraproject.org/</link>
+    <dc:subject>Fedora Project</dc:subject>
+    <dc:subject>Bookmarks Toolbar</dc:subject>
+  </item>
+  <item rdf:about="http://ask.fedoraproject.org/">
+    <title>Ask Fedora: Community Knowledge Base and Support Forum</title>
+    <link>http://ask.fedoraproject.org/</link>
+    <dc:subject>Fedora Project</dc:subject>
+    <dc:subject>Bookmarks Toolbar</dc:subject>
+  </item>
+  <item rdf:about="http://fedoramagazine.org/">
+    <title>Fedora Magazine | News, announcements, and technical information about the Fedora Linux distribution</title>
+    <link>http://fedoramagazine.org/</link>
+    <dc:subject>Fedora Project</dc:subject>
+    <dc:subject>Bookmarks Toolbar</dc:subject>
+  </item>
+  <item rdf:about="http://planet.fedoraproject.org/">
+    <title>Planet Fedora</title>
+    <link>http://planet.fedoraproject.org/</link>
+    <dc:subject>Fedora Project</dc:subject>
+    <dc:subject>Bookmarks Toolbar</dc:subject>
+  </item>
+  <item rdf:about="http://forums.fedoraforum.org/">
+    <title>Fedora Forum</title>
+    <link>http://forums.fedoraforum.org/</link>
+    <dc:subject>Fedora Project</dc:subject>
+    <dc:subject>Bookmarks Toolbar</dc:subject>
+  </item>
+  <item rdf:about="http://fedoraproject.org/en/join-fedora">
+    <title>Join the Fedora Project</title>
+    <link>http://fedoraproject.org/en/join-fedora</link>
+    <dc:subject>Fedora Project</dc:subject>
+    <dc:subject>Bookmarks Toolbar</dc:subject>
+  </item>
+  <item rdf:about="file:///usr/share/doc/HTML/fedora-release-notes/index.html">
+    <title>Release Notes</title>
+    <link>file:///usr/share/doc/HTML/fedora-release-notes/index.html</link>
+    <dc:subject>Fedora Project</dc:subject>
+    <dc:subject>Bookmarks Toolbar</dc:subject>
+  </item>
+  <item rdf:about="http://www.redhat.com/">
+    <title>Red Hat</title>
+    <link>http://www.redhat.com/</link>
+    <dc:subject>Red Hat</dc:subject>
+    <dc:subject>Bookmarks Toolbar</dc:subject>
+  </item>
+  <item rdf:about="http://www.jboss.org/">
+    <title>JBoss</title>
+    <link>http://www.jboss.org/</link>
+    <dc:subject>Red Hat</dc:subject>
+    <dc:subject>Bookmarks Toolbar</dc:subject>
+  </item>
+  <item rdf:about="http://opensource.com/">
+    <title>OpenSource.com</title>
+    <link>http://opensource.com/</link>
+    <dc:subject>Red Hat</dc:subject>
+    <dc:subject>Bookmarks Toolbar</dc:subject>
+  </item>
+  <item rdf:about="http://theopensourceway.org/">
+    <title>The Open Source Way</title>
+    <link>http://theopensourceway.org/</link>
+    <dc:subject>Red Hat</dc:subject>
+    <dc:subject>Bookmarks Toolbar</dc:subject>
+  </item>
+  <item rdf:about="http://www.wikipedia.org/">
+    <title>Wikipedia</title>
+    <link>http://www.wikipedia.org/</link>
+    <dc:subject>Free Content</dc:subject>
+    <dc:subject>Bookmarks Toolbar</dc:subject>
+  </item>
+  <item rdf:about="http://librivox.org/">
+    <title>LibriVox</title>
+    <link>http://librivox.org/</link>
+    <dc:subject>Free Content</dc:subject>
+    <dc:subject>Bookmarks Toolbar</dc:subject>
+  </item>
+  <item rdf:about="http://www.openclipart.org/">
+    <title>Open Clip Art</title>
+    <link>http://www.openclipart.org/</link>
+    <dc:subject>Free Content</dc:subject>
+    <dc:subject>Bookmarks Toolbar</dc:subject>
+  </item>
+  <item rdf:about="http://www.freesound.org/">
+    <title>Free Sound</title>
+    <link>http://www.freesound.org/</link>
+    <dc:subject>Free Content</dc:subject>
+    <dc:subject>Bookmarks Toolbar</dc:subject>
+  </item>
+  <item rdf:about="http://creativecommons.org/">
+    <title>Creative Commons</title>
+    <link>http://creativecommons.org/</link>
+    <dc:subject>Free Content</dc:subject>
+    <dc:subject>Bookmarks Toolbar</dc:subject>
+  </item>
+  <item rdf:about="file:///library/index.html">
+    <title>Internet in a Box - HOME</title>
+    <link>file:///library/index.html</link>
+  </item>
+  <item rdf:about="http://10.4.75.96:80/">
+    <title>Officejet Pro 8600 [E0BFCE]</title>
+    <link>http://10.4.75.96:80/</link>
+  </item>
+  <item rdf:about="https://10.4.74.165:80/">
+    <title>MGMT console at schoolserver </title>
+    <link>https://10.4.74.165:80/</link>
+  </item>
+</rdf:RDF>

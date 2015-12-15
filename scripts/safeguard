@@ -1,0 +1,11 @@
+/usr/bin/xs-handle-automatic
+/usr/bin/sugar
+/etc/rc.d/rc.local
+/usr/bin/sugar 
+/usr/bin/xs-sysprep
+/usr/bin/xs-betaprep
+/usr/bin/xs-remote-on
+/usr/bin/xs-remote-off
+/etc/rc.d/rc.local.gh
+/usr/bin/xs-handle
+

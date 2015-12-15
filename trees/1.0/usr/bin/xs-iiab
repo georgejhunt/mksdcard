@@ -1,0 +1,11 @@
+#!/bin/bash
+# part of XSCE 
+# script to turn on the GUI and the browser at boot
+if [ `id -u` -ne 0 ]; then
+  echo "please become root to execute this command"
+  exit 1
+fi
+systemctl enable olpc-dm.service
+touch /home/olpc/.browser-at-boot
+read -p "Use <ctl>C to abort the reboot. Or <Enter> to proceed. " ans
+reboot

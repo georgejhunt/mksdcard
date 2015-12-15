@@ -1,0 +1,3 @@
+sleep 20
+rm /home/olpc/.config/epiphany/session_state.xml
+/usr/bin/epiphany http://schoolserver.lan/xs-portal/en/

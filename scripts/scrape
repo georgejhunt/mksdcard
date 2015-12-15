@@ -1,0 +1,17 @@
+#!/bin/bash -x
+# routine to fetch sparce file that need to be preserved into a sparse tree
+
+SCRIPT=$(readlink -f $0)
+# Absolute path this script is in.
+SCRIPTPATH=`dirname $SCRIPT`
+SOURCEROOT=root@10.8.0.26:
+
+pushd $SCRIPTPATH
+TREES=../trees 
+XOVERSION=1.0
+mkdir -p $TREES/$XOVERSION
+for f in `cat safeguard`; do
+   mkdir -p `dirname $TREES/$XOVERSION/$f`
+   scp $SOURCEROOT$f $TREES/$XOVERSION/$f
+done
+popd

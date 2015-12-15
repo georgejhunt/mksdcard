@@ -1,0 +1,16 @@
+#!/bin/bash -x
+
+# Turn off services which permit remote access to this machine
+systemctl disable openvpn@xscenet
+systemctl stop openvpn@xscenet
+systemctl disable sshd.service
+systemctl stop sshd.service
+
+# Unset flags used by /bin/xs-handle-automatic
+rm -f /etc/xsce/openvpn_allowed
+rm -f /etc/xsce/sshd_allowed
+
+# Uninstall Sugar splash screen, explaining/reminding "su -c xo-remote-off"
+cp -f /usr/share/plymouth/themes/olpc/xo-original.png /usr/share/plymouth/themes/olpc/xo.png
+
+echo -e '\nRemote Administration has been turned OFF. OpenVPN and ssh deamons are now off. In future if you want to re-enable remote maintenance and product improvement, run "su -c xs-remote-on" from Terminal.'

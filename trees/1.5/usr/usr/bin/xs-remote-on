@@ -1,0 +1,18 @@
+#!/bin/bash -x
+
+# Set flags used by /bin/xs-handle-automatic
+touch /etc/xsce/openvpn_allowed
+touch /etc/xsce/sshd_allowed
+
+# Install Sugar splash screen, explaining/reminding "su -c xo-remote-off"
+cp -f /usr/share/plymouth/themes/olpc/xo-remote-warning.png /usr/share/plymouth/themes/olpc/xo.png
+
+# Turn on services which permit remote access to this machine
+systemctl enable openvpn@xscenet
+systemctl restart openvpn@xscenet
+systemctl enable sshd.service
+systemctl start sshd.service
+
+echo -e '\nWARNING: Remote Administration is ON to permit remote maintenance and product improvement. OpenVPN and ssh daemons are now on. To turn off all remote access to your computer, run "su -c xs-remote-off" from Terminal.'
+
+# echo -e "\n\nSUGGESTION: Run xs-handle.  Then type in your name, or favorite animal, which will identify your machine at http://xscenet.net.  After 2 minutes, verify the new handle by browsing to http://xscenet.net"
