@@ -7,6 +7,15 @@ SCRIPT=$(readlink -f $0)
 SCRIPTPATH=`dirname $SCRIPT`
 
 cd $SCRIPTPATH
+# the downloading requires more /tmp than in the olpc build
+grep size=200 /etc/fstab
+if [ $? -ne 0 ]; then
+		  sed -i -e 's|^/tmp.*$|/tmp	/tmp	tmpfs	rw,size=200m	0	0|' /etc/fstab
+		  sed -i -e 's|^vartmp.*$|vartmp	/vartmp	tmpfs	rw,size=200m	0	0|' /etc/fstab
+        cp /home/olpc/.bash* /root/
+        sed -i -e 's/^TEMPORARY_STATE.*/TEMPORARY_STATE=no/' /etc/sysconfig/readonly-root
+		  reboot
+fi
 cp ../yum/rpmfusion.repo /etc/yum.repos.d
 
 cd /root
