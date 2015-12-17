@@ -23,6 +23,8 @@ As an aside if preparing to make a new distribution, do the following::
 * On a linux machine, "git clone https://github.com/georgejhunt/os-builer --branch sdcard"
 * Run the os-builder: "os-builder /root/mksdcard/olpc-os-xo1.5.ini"(5:44 --takes about 30min)
 
+###XO4 Cookbook
+I may need to add "iw dev wlan0 set 4addr" to rc.local in order for bridging to work.  But it seems maybe to persist through a reboot. (But has twice been required to get bridging configured -- and it seems so non-intuitive.)
 
 ##History
 * The olpc-os-builder ini file I was able to craft did not transfer corectly to Gnome. So I shifted to the strategy of loading James Cameron's 13.2.5 image onto an SD card, and then modifying it with a bash script from there (making mkxo10.sh obsolete).
