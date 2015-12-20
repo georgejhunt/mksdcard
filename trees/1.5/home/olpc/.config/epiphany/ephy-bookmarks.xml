@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<ephy_bookmarks version="1.03">
+  <!--Do not rely on this file, it's only for internal use. Use bookmarks.rdf instead.-->
+  <node id="31">
+    <property id="5" value_type="gchararray">Bookmarks Toolbar</property>
+    <property id="8" value_type="gint">2</property>
+    <parent id="1"/>
+  </node>
+  <node id="33">
+    <property id="5" value_type="gchararray">Fedora Project</property>
+    <property id="8" value_type="gint">2</property>
+    <parent id="1"/>
+  </node>
+  <node id="41">
+    <property id="5" value_type="gchararray">Red Hat</property>
+    <property id="8" value_type="gint">2</property>
+    <parent id="1"/>
+  </node>
+  <node id="46">
+    <property id="5" value_type="gchararray">Free Content</property>
+    <property id="8" value_type="gint">2</property>
+    <parent id="1"/>
+  </node>
+  <node id="30">
+    <property id="2" value_type="gchararray">Fedora Documentation</property>
+    <property id="3" value_type="gchararray">http://docs.fedoraproject.org/</property>
+    <property id="4" value_type="gchararray">bookmarks toolbar  fedora documentation</property>
+    <parent id="0"/>
+    <parent id="31"/>
+  </node>
+  <node id="32">
+    <property id="2" value_type="gchararray">Fedora Project</property>
+    <property id="3" value_type="gchararray">http://fedoraproject.org/</property>
+    <property id="4" value_type="gchararray">bookmarks toolbar fedora project  fedora project</property>
+    <parent id="0"/>
+    <parent id="31"/>
+    <parent id="33"/>
+  </node>
+  <node id="34">
+    <property id="2" value_type="gchararray">Ask Fedora: Community Knowledge Base and Support Forum</property>
+    <property id="3" value_type="gchararray">http://ask.fedoraproject.org/</property>
+    <property id="4" value_type="gchararray">bookmarks toolbar fedora project  ask fedora: community knowledge base and support forum</property>
+    <parent id="0"/>
+    <parent id="31"/>
+    <parent id="33"/>
+  </node>
+  <node id="35">
+    <property id="2" value_type="gchararray">Fedora Magazine | News, announcements, and technical information about the Fedora Linux distribution</property>
+    <property id="3" value_type="gchararray">http://fedoramagazine.org/</property>
+    <property id="4" value_type="gchararray">bookmarks toolbar fedora project  fedora magazine | news, announcements, and technical information about the fedora linux distribution</property>
+    <parent id="0"/>
+    <parent id="31"/>
+    <parent id="33"/>
+  </node>
+  <node id="36">
+    <property id="2" value_type="gchararray">Planet Fedora</property>
+    <property id="3" value_type="gchararray">http://planet.fedoraproject.org/</property>
+    <property id="4" value_type="gchararray">bookmarks toolbar fedora project  planet fedora</property>
+    <parent id="0"/>
+    <parent id="31"/>
+    <parent id="33"/>
+  </node>
+  <node id="37">
+    <property id="2" value_type="gchararray">Fedora Forum</property>
+    <property id="3" value_type="gchararray">http://forums.fedoraforum.org/</property>
+    <property id="4" value_type="gchararray">bookmarks toolbar fedora project  fedora forum</property>
+    <parent id="0"/>
+    <parent id="31"/>
+    <parent id="33"/>
+  </node>
+  <node id="38">
+    <property id="2" value_type="gchararray">Join the Fedora Project</property>
+    <property id="3" value_type="gchararray">http://fedoraproject.org/en/join-fedora</property>
+    <property id="4" value_type="gchararray">bookmarks toolbar fedora project  join the fedora project</property>
+    <parent id="0"/>
+    <parent id="31"/>
+    <parent id="33"/>
+  </node>
+  <node id="39">
+    <property id="2" value_type="gchararray">Release Notes</property>
+    <property id="3" value_type="gchararray">file:///usr/share/doc/HTML/fedora-release-notes/index.html</property>
+    <property id="4" value_type="gchararray">bookmarks toolbar fedora project  release notes</property>
+    <parent id="0"/>
+    <parent id="31"/>
+    <parent id="33"/>
+  </node>
+  <node id="40">
+    <property id="2" value_type="gchararray">Red Hat</property>
+    <property id="3" value_type="gchararray">http://www.redhat.com/</property>
+    <property id="4" value_type="gchararray">bookmarks toolbar red hat  red hat</property>
+    <parent id="0"/>
+    <parent id="31"/>
+    <parent id="41"/>
+  </node>
+  <node id="42">
+    <property id="2" value_type="gchararray">JBoss</property>
+    <property id="3" value_type="gchararray">http://www.jboss.org/</property>
+    <property id="4" value_type="gchararray">bookmarks toolbar red hat  jboss</property>
+    <parent id="0"/>
+    <parent id="31"/>
+    <parent id="41"/>
+  </node>
+  <node id="43">
+    <property id="2" value_type="gchararray">OpenSource.com</property>
+    <property id="3" value_type="gchararray">http://opensource.com/</property>
+    <property id="4" value_type="gchararray">bookmarks toolbar red hat  opensource.com</property>
+    <parent id="0"/>
+    <parent id="31"/>
+    <parent id="41"/>
+  </node>
+  <node id="44">
+    <property id="2" value_type="gchararray">The Open Source Way</property>
+    <property id="3" value_type="gchararray">http://theopensourceway.org/</property>
+    <property id="4" value_type="gchararray">bookmarks toolbar red hat  the open source way</property>
+    <parent id="0"/>
+    <parent id="31"/>
+    <parent id="41"/>
+  </node>
+  <node id="45">
+    <property id="2" value_type="gchararray">Wikipedia</property>
+    <property id="3" value_type="gchararray">http://www.wikipedia.org/</property>
+    <property id="4" value_type="gchararray">bookmarks toolbar free content  wikipedia</property>
+    <parent id="0"/>
+    <parent id="31"/>
+    <parent id="46"/>
+  </node>
+  <node id="47">
+    <property id="2" value_type="gchararray">LibriVox</property>
+    <property id="3" value_type="gchararray">http://librivox.org/</property>
+    <property id="4" value_type="gchararray">bookmarks toolbar free content  librivox</property>
+    <parent id="0"/>
+    <parent id="31"/>
+    <parent id="46"/>
+  </node>
+  <node id="48">
+    <property id="2" value_type="gchararray">Open Clip Art</property>
+    <property id="3" value_type="gchararray">http://www.openclipart.org/</property>
+    <property id="4" value_type="gchararray">bookmarks toolbar free content  open clip art</property>
+    <parent id="0"/>
+    <parent id="31"/>
+    <parent id="46"/>
+  </node>
+  <node id="49">
+    <property id="2" value_type="gchararray">Free Sound</property>
+    <property id="3" value_type="gchararray">http://www.freesound.org/</property>
+    <property id="4" value_type="gchararray">bookmarks toolbar free content  free sound</property>
+    <parent id="0"/>
+    <parent id="31"/>
+    <parent id="46"/>
+  </node>
+  <node id="50">
+    <property id="2" value_type="gchararray">Creative Commons</property>
+    <property id="3" value_type="gchararray">http://creativecommons.org/</property>
+    <property id="4" value_type="gchararray">bookmarks toolbar free content  creative commons</property>
+    <parent id="0"/>
+    <parent id="31"/>
+    <parent id="46"/>
+  </node>
+  <node id="53">
+    <property id="2" value_type="gchararray">Internet in a Box - HOME</property>
+    <property id="3" value_type="gchararray">file:///library/index.html</property>
+    <property id="4" value_type="gchararray"> internet in a box - home</property>
+    <parent id="0"/>
+    <parent id="3"/>
+  </node>
+</ephy_bookmarks>
