@@ -33,7 +33,7 @@ yum install -y git ansible tree vim firefox mlocate linux-firmware \
 	gstreamer-ffmpeg gstreamer1-libav httpd compat-gcc-43
 
 gsettings set org.gnome.Epiphany restore-session-policy never
-sed -i -e's|^Exec=.*|Exec=file:///var/www/html/xs-portal/ %U| /usr/share/applications/epiphany.desktop
+sed -i -e's|^Exec=.*|Exec=file:///var/www/html/xs-portal/ %U|' /usr/share/applications/epiphany.desktop
 mkdir -p /opt/schoolserver
 cd /opt/schoolserver
 git clone https://github.com/XSCE/xsce --depth 1
@@ -47,3 +47,5 @@ cd /opt/schoolserver/xsce
 
 # the following does a restart and keeps this script from completing
 ./install-console # so just wait for the few minutes, and restart it
+
+ln -sf /lib/systemd/system/graphical.target default.target
