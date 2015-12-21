@@ -13,7 +13,7 @@ rm -f /.olpc-configured
 rm -f /home/olpc/.olpc-configured
 rm -rf /etc/NetworkManager/system-connections/*
 rm -f /etc/sysconfig/network-scripts/keys*
-ls -1 /etc/sysconfig/network-scripts/ifcfg* | grep -v -eifcfg-lo| xargs rm -f
+ls -1 /etc/sysconfig/network-scripts/ifcfg* | grep -v -eifcfg-LAN -eifcfg-lo| xargs rm -f
 rm -f /etc/alsa/sound.state
 rm -f /etc/ssh/ssh_host_rsa_key{,.pub}
 rm -f /etc/sysconfig/network
