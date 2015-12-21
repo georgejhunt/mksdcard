@@ -7,4 +7,4 @@ SCRIPTPATH=`dirname $SCRIPT`
 cd $SCRIPTPATH
 cd ..
 pwd
-#/usr/bin/cp -Rf trees/1.0/* /
+/usr/bin/cp -Rf trees/1.0/* /

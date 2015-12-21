@@ -37,9 +37,12 @@ cd /opt/schoolserver/xsce
 
 # get the repository  that installs files sparsely
 cd /root
-git clone https://github.com/XSCE/xsce-local --branch xo1
-./xsce-local/scripts/cp-root
+#git clone https://github.com/XSCE/xsce-local --branch xo1
+#./xsce-local/scripts/cp-root
 # the setuid bit does not copy properly 
+
+./cp_10
+
 chmod 4755 /usr/bin/xs-remote-on
 chmod 4755 /usr/bin/xs-remote-off
 gsettings set org.gnome.Epiphany restore-session-policy never
