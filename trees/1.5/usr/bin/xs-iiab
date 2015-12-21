@@ -8,4 +8,6 @@ fi
 systemctl enable olpc-dm.service
 touch /home/olpc/.browser-at-boot
 read -p "Use <ctl>C to abort the reboot. Or <Enter> to proceed. " ans
-reboot
+#reboot
+systemctl restart olpc-dm
+

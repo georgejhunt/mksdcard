@@ -30,7 +30,7 @@ yum install -y git ansible tree vim firefox mlocate linux-firmware \
 	gstreamer1-plugins-bad-freeworld	gstreamer1-plugins-base-tools \
 	gstreamer1-plugins-good-extra	gstreamer1-plugins-bad-free \
 	gstreamer-plugins-ugly	gstreamer-plugins-bad \
-	gstreamer-ffmpeg gstreamer1-libav httpd compat-gcc-43
+	gstreamer-ffmpeg gstreamer1-libav httpd 
 
 gsettings set org.gnome.Epiphany restore-session-policy never
 sed -i -e's|^Exec=.*|Exec=file:///var/www/html/xs-portal/ %U|' /usr/share/applications/epiphany.desktop
