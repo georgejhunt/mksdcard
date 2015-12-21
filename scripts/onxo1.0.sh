@@ -21,7 +21,7 @@ SCRIPT=$(readlink -f $0)
 # Absolute path this script is in.
 SCRIPTPATH=`dirname $SCRIPT`
 
-yum install -y git ansible tree vim firefox mlocate linux-firmware \
+yum install -y git ansible \
 	gstreamer1-plugins-ugly	gstreamer1-plugins-bad-free-extras \
 	gstreamer1-plugins-bad-freeworld	gstreamer1-plugins-base-tools \
 	gstreamer1-plugins-good-extra	gstreamer1-plugins-bad-free \

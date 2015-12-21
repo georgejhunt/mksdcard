@@ -14,7 +14,7 @@
      kiwix_server_enabled: True
 
   roles:
-      - { role: openvpn, tags: ['openvpn'] }
+#      - { role: openvpn, tags: ['openvpn'] }
       - { role: kiwix, tags: ['kiwix'] }
 #      - { role: httpd, tags: ['httpd'] }
 
