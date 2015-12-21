@@ -46,7 +46,7 @@ cd /root
 chmod 4755 /usr/bin/xs-remote-on
 chmod 4755 /usr/bin/xs-remote-off
 gsettings set org.gnome.Epiphany restore-session-policy never
-sed -i -e's/^Exec=.*/Exec=file:///library/index.html %U/ /usr/share/applications/epiphany.desktop
+sed -i -e's/^Exec=.*/Exec=epiphany file:///library/index.html %U/' /usr/share/applications/epiphany.desktop
 
 # establish a reasonable base of installed packages
 #cd /opt/schoolserver/xsce
