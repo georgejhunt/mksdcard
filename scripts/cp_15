@@ -5,6 +5,10 @@ SCRIPT=$(readlink -f $0)
 # Absolute path this script is in.
 SCRIPTPATH=`dirname $SCRIPT`
 cd $SCRIPTPATH
-cd ..
+cd ../trees/1.5
 pwd
-/usr/bin/cp -Rfa trees/1.5/* /
+/usr/bin/cp -Rfa * /
+
+# force copying into /home/olpc changes owner to root -- change it back
+chown -R olpc /home/olpc
+

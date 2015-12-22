@@ -33,14 +33,12 @@ yum install -y git ansible tree vim firefox mlocate linux-firmware \
 	gstreamer-ffmpeg gstreamer1-libav httpd 
 
 gsettings set org.gnome.Epiphany restore-session-policy never
-sed -i -e's|^Exec=.*|Exec=file:///var/www/html/xs-portal/ %U|' /usr/share/applications/epiphany.desktop
+sed -i -e's|^Exec=.*|Exec=/bin/epiphany file:///var/www/html/xs-portal/ %U|' /usr/share/applications/epiphany.desktop
+
+
 mkdir -p /opt/schoolserver
 cd /opt/schoolserver
 git clone https://github.com/XSCE/xsce --depth 1
-
-# run the playbooks that install things we need on the xo1
-cd /root
-git clone https://github.com/XSCE/xsce-local --branch xo15
 
 # install up to the console so that users can select their services
 cd /opt/schoolserver/xsce
@@ -49,3 +47,9 @@ cd /opt/schoolserver/xsce
 ./install-console # so just wait for the few minutes, and restart it
 
 ln -sf /lib/systemd/system/graphical.target default.target
+
+# copy the files that make this an unleashkids sdcard project
+cd $SCRIPTPATH
+./cp_15
+
+echo ALL DONE
