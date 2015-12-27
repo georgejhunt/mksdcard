@@ -1,5 +1,5 @@
 #!/bin/bash -x
-# run this script after stock install of 13.2.5 to create enhanced SD card 
+# run this script after stock install of 13.2.6 to create enhanced SD card 
 
 # Absolute path to this script.
 SCRIPT=$(readlink -f $0)
@@ -13,18 +13,19 @@ if [ $? -ne 0 ]; then
 		  sed -i -e 's|^/tmp.*$|/tmp	/tmp	tmpfs	rw,size=200m	0	0|' /etc/fstab
 		  sed -i -e 's|^vartmp.*$|vartmp	/vartmp	tmpfs	rw,size=200m	0	0|' /etc/fstab
         cp /home/olpc/.bash* /root/
-        sed -i -e 's/^TEMPORARY_STATE.*/TEMPORARY_STATE=no/' /etc/sysconfig/readonly-root
+        sed -i -e '/excludedocs/ d' /etc/rpm/macros.imgcreate
+#        sed -i -e 's/^TEMPORARY_STATE.*/TEMPORARY_STATE=no/' /etc/sysconfig/readonly-root
 		  reboot
 fi
 cp ../yum/rpmfusion.repo /etc/yum.repos.d
 
 cd /root
 # the stock kernel does not have bridge module
-#wget http://download.unleashkids.org/xsce/downloads/os/kernel_1.5/kernel-3.3.8_xo1.5-20150718.1548.olpc.313c677.i686.rpm
-#yum -y localinstall ./kernel*
+wget http://download.unleashkids.org/xsce/downloads/os/kernel_4/kernel-3.5.7_xo4-20151216.1806.olpc.d520550.armv7hl.rpm
+yum -y localinstall ./kernel*
 
 gsettings set org.gnome.Epiphany restore-session-policy never
-sed -i -e's/^Exec=.*/Exec=file:///library/index.html %U/ /usr/share/applications/epiphany.desktop
+sed -i -e's/^Exec=.*/Exec=epiphany file:///library/index.html %U/ /usr/share/applications/epiphany.desktop
 
 yum install -y git ansible tree vim firefox mlocate linux-firmware \
 	gstreamer1-plugins-ugly	gstreamer1-plugins-bad-free-extras \
