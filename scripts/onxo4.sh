@@ -25,7 +25,7 @@ wget http://download.unleashkids.org/xsce/downloads/os/kernel_4/kernel-3.5.7_xo4
 yum -y localinstall ./kernel*
 
 gsettings set org.gnome.Epiphany restore-session-policy never
-sed -i -e's/^Exec=.*/Exec=epiphany file:///library/index.html %U/ /usr/share/applications/epiphany.desktop
+sed -i -e's/^Exec=.*/Exec=epiphany file:///library/index.html %U/' /usr/share/applications/epiphany.desktop
 
 yum install -y git ansible tree vim firefox mlocate linux-firmware \
 	gstreamer1-plugins-ugly	gstreamer1-plugins-bad-free-extras \
