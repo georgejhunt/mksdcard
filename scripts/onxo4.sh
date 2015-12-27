@@ -17,7 +17,7 @@ if [ $? -ne 0 ]; then
 #        sed -i -e 's/^TEMPORARY_STATE.*/TEMPORARY_STATE=no/' /etc/sysconfig/readonly-root
 		  reboot
 fi
-cp ../yum/rpmfusion.repo /etc/yum.repos.d
+cp ../yum/rpmfusion.repo.secondary /etc/yum.repos.d
 
 cd /root
 # the stock kernel does not have bridge module
