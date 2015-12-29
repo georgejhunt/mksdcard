@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Clean machine for shipment, removing personal/sensitive data.
+
+# See also /bin/xs-sysprep which calls this entire routine, then cleans more thoroughly,
+# prior to final shipment.
+
+# cp restorebashrc /root/.bashrc
+rm -f /root/.ssh/*
+rm -f /etc/xsce/uuid
+rm -f /etc/xsce/handle
+rm -f /.olpc-configured
+rm -f /home/olpc/.olpc-configured
+rm -rf /etc/NetworkManager/system-connections/*
+rm -f /etc/sysconfig/network-scripts/keys*
+ls -1 /etc/sysconfig/network-scripts/ifcfg* | grep -v -eifcfg-LAN -eifcfg-lo| xargs rm -f
+rm -f /etc/alsa/sound.state
+rm -f /etc/ssh/ssh_host_rsa_key{,.pub}
+rm -f /etc/sysconfig/network
+rm -rf /home/olpc/.sugar /home/olpc/.gconf* /home/olpc/.local.share.telepathy
+rm -f /home/olpc/.config/epiphany/cookies.sqlite
+rm -f /home/olpc/.config/epiphany/ephy-history.db
+rm -f /home/.devkey.html
+rm -f /root/.netrc
+rm -rf /root/tools
+rm -rf /opt/schoolserver/downloads/*
+rm -rf /var/cache/yum/*
+
+
+cd /root
+
+# ATTEMPT (not yet working!) to delete Sugar nick, so 1st boot's not corrupted w/ stale nick!
+su - olpc -c 'gsettings reset org.sugarlabs.user nick' 2>dev/null
+# su - olpc -c 'gsettings set org.sugarlabs.user nick DEFAULT'
+
+# Turn on OpenVPN & ssh daemons (may be gratuitous if xs-sysprep then turns them off, ah well!)
+/bin/xs-remote-on

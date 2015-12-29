@@ -1,0 +1,10 @@
+#!/bin/bash -x
+
+# Record UUID in case SD card is transfered to another XO
+UUID=`cat /proc/device-tree/mfg-data/SN`
+echo "$UUID" > /etc/xsce/uuid
+
+# Encode vpn handle to /etc/xsce/handle
+
+# MODIFY BELOW TO CHANGE MACHINE'S VPN /etc/xsce/handle FOR http://xscenet.net
+/bin/xs-handle-automatic
