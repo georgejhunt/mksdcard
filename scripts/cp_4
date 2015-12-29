@@ -1,0 +1,14 @@
+#!/bin/bash -x
+# Absolute path to this script.
+shopt -s dotglob
+SCRIPT=$(readlink -f $0)
+# Absolute path this script is in.
+SCRIPTPATH=`dirname $SCRIPT`
+cd $SCRIPTPATH
+cd ../trees/4/
+pwd
+/usr/bin/cp -Rfa * /
+
+# force copying into /home/olpc changes owner to root -- change it back
+chown -R olpc /home/olpc
+
