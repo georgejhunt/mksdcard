@@ -20,7 +20,7 @@ cp ../yum/rpmfusion.repo /etc/yum.repos.d
 
 cd /root
 # the stock kernel does not have bridge module
-wget http://download.unleashkids.org/xsce/downloads/os/kernel_1.5/kernel-3.3.8_xo1.5-20160102.1250.0-6CE.8ddad46.i686.rpm
+wget http://download.unleashkids.org/xsce/downloads/os/xo1.5/kernel-3.3.8_xo1.5-20160102.1250.06CE.8ddad46.i686.rpm
 yum -y localinstall ./kernel*
 
 # gcc 7.0 does not compile cmdsrv correctly
