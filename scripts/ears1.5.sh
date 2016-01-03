@@ -17,6 +17,7 @@ if [ $? -ne 0 ]; then
 		  reboot
 fi
 cp ../yum/rpmfusion.repo /etc/yum.repos.d
+cp ../firmware/15/* /usr/lib/firmware
 
 cd /root
 # the stock kernel does not have bridge module
@@ -25,7 +26,7 @@ yum -y localinstall ./kernel*
 
 # gcc 7.0 does not compile cmdsrv correctly
 yum -y remove gcc
-yum install -y git ansible tree vim firefox mlocate linux-firmware \
+yum install -y git ansible tree vim firefox mlocate  \
 	gstreamer1-plugins-ugly	gstreamer1-plugins-bad-free-extras \
 	gstreamer1-plugins-bad-freeworld	gstreamer1-plugins-base-tools \
 	gstreamer1-plugins-good-extra	gstreamer1-plugins-bad-free \
@@ -35,6 +36,8 @@ yum install -y git ansible tree vim firefox mlocate linux-firmware \
 gsettings set org.gnome.Epiphany restore-session-policy never
 sed -i -e's|^Exec=.*|Exec=/bin/epiphany http://schoolserver.lan %U|' /usr/share/applications/epiphany.desktop
 
+# communicate to rc.local that this is an access point
+touch /etc/xsce/access-point
 
 mkdir -p /opt/schoolserver
 cd /opt/schoolserver
