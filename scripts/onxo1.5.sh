@@ -32,8 +32,8 @@ yum install -y git ansible tree vim firefox mlocate linux-firmware \
 	gstreamer-plugins-ugly	gstreamer-plugins-bad \
 	gstreamer-ffmpeg gstreamer1-libav httpd 
 
-gsettings set org.gnome.Epiphany restore-session-policy never
-sed -i -e's|^Exec=.*|Exec=/bin/epiphany file:///var/www/html/xs-portal/ %U|' /usr/share/applications/epiphany.desktop
+su  olpc -c 'gsettings set org.gnome.Epiphany restore-session-policy never'
+sed -i -e's|^Exec=.*|Exec=/bin/epiphany http://schoolserver.lan %U|' /usr/share/applications/epiphany.desktop
 
 
 mkdir -p /opt/schoolserver
