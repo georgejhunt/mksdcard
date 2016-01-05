@@ -17,8 +17,8 @@ XO-1)
       rm -rf /var/cache/yum/*
       yum -y erase ansible git
       yum clean all
-      rm -rf /opt/schoolserver/xsce/*
+      rm -rf /opt/schoolserver/xsce
       ;;
 *)
-      rm -rf /opt/schoolserver/downloads/*
 esac
+      rm -rf /opt/schoolserver/downloads/*
