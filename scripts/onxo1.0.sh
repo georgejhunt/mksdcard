@@ -33,24 +33,21 @@ yum install -y git ansible tree vim firefox mlocate linux-firmware \
 mkdir -p /opt/schoolserver
 cd /opt/schoolserver
 git clone https://github.com/XSCE/xsce --depth 1
+# copy the xo1 unique playbook
 cp /root/mksdcard/config/* /opt/schoolserver/xsce
 cd /opt/schoolserver/xsce
+# execute the specialized playbook that only installs openvpn and kiwix
 ./xo1-install
 
-# get the repository  that installs files sparsely
-cd /root
-git clone https://github.com/XSCE/xsce-local --branch xo1
-./xsce-local/scripts/cp-root
+cd $SCRIPTPATH
+# do the sparse copy of files that are unique to this unleashkids version
+./cp_1
+
 # the setuid bit does not copy properly 
 chmod 4755 /usr/bin/xs-remote-on
 chmod 4755 /usr/bin/xs-remote-off
-su olpc -c "gsettings set org.gnome.Epiphany restore-session-policy never"
-sed -i -e's/^Exec=.*/Exec=file:///library/index.html %U/ /usr/share/applications/epiphany.desktop
-
-# establish a reasonable base of installed packages
-#cd /opt/schoolserver/xsce
-#./runtags download
-# the following does a restart and keeps this script from completing
-#./install-console
+su olpc -c 'gsettings set org.gnome.Epiphany restore-session-policy never'
+sed -i -e's|^Exec=.*|Exec=file:///library/index.html %U|' /usr/share/applications/epiphany.desktop
 
 echo "all done"
+
