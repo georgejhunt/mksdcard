@@ -14,7 +14,7 @@ fi
 
 case $XO_VERSION in
 XO-1) 
-      rm /var/cache/yum/*
+      rm -rf /var/cache/yum/*
       yum -y erase ansible git
       yum clean all
       rm -rf /opt/schoolserver/xsce/*
