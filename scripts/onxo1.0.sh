@@ -24,12 +24,20 @@ SCRIPT=$(readlink -f $0)
 # Absolute path this script is in.
 SCRIPTPATH=`dirname $SCRIPT`
 
-yum install -y git ansible tree vim firefox mlocate linux-firmware \
+yum install -y git ansible tree vim firefox mlocate  \
 	gstreamer1-plugins-ugly	gstreamer1-plugins-bad-free-extras \
 	gstreamer1-plugins-bad-freeworld	gstreamer1-plugins-base-tools \
 	gstreamer1-plugins-good-extra	gstreamer1-plugins-bad-free \
 	gstreamer-plugins-ugly	gstreamer-plugins-bad \
-	gstreamer-ffmpeg gstreamer1-libav man man-db man-pages
+	gstreamer-ffmpeg gstreamer1-libav man man-db man-pages tuxmath tuxpaint
+
+# accumulate the manual entries for selected programs already installed
+yum reinstall tree epiphany nano gsettings
+updatedb
+
+cd
+wget http://activities.sugarlabs.org/es-ES/sugar/downloads/latest/4253/addon-4253-latest.xo
+unzip -d /home/olpc/Activities fototoon-13.xo
 
 mkdir -p /opt/schoolserver
 cd /opt/schoolserver
