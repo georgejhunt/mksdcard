@@ -66,3 +66,5 @@ FILENAME=$FILENAME.img
 dd if=$DEVICE of=/root/images/xo1/$FILENAME bs=512 count=$total_sectors
 cd /root/images/xo1
 zip $FILENAME.zip $FILENAME
+md5sum $FILENAME > $FILENAME.md5.txt
+md5sum $FILENAME.zip > $FILENAME.zip.md5.txt
