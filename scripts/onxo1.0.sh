@@ -32,12 +32,12 @@ yum install -y git ansible tree vim firefox mlocate  \
 	gstreamer-ffmpeg gstreamer1-libav man man-db man-pages tuxmath tuxpaint
 
 # accumulate the manual entries for selected programs already installed
-yum reinstall tree epiphany nano gsettings
+yum reinstall -y tree epiphany nano gsettings
 updatedb
 
 cd
 wget http://activities.sugarlabs.org/es-ES/sugar/downloads/latest/4253/addon-4253-latest.xo
-unzip -d /home/olpc/Activities fototoon-13.xo
+unzip -d /home/olpc/Activities addon-4253-latest.xo
 
 mkdir -p /opt/schoolserver
 cd /opt/schoolserver
