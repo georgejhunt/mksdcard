@@ -17,6 +17,7 @@ cd /root
 git clone https://github.com/georgejhunt/mksdcard
 cp /root/mksdcard/yum/rpmfusion.repo /etc/yum.repos.d
 mkdir -p /etc/xsce
+echo 32 > /etc/xsce/sd-size
 
 # Absolute path to this script.
 SCRIPT=$(readlink -f $0)
