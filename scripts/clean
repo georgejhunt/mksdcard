@@ -1,0 +1,24 @@
+#!/bin/bash -x
+# wipe out the bloat on sd cards
+
+XO_VERSION=
+if [ -f /proc/device-tree/mfg-data/MN ]
+then
+  XO_VERSION=`cat /proc/device-tree/mfg-data/MN`
+fi
+
+SD-SIZE=
+if [ -f /etc/xsce/sd-size ];then
+  SD-SIZE=`cat /etc/xsce/sd-size`
+fi
+
+case $XO_VERSION
+XO-1) rm /var/cache/yum/*
+      yum -y erase ansible git
+      yum clean all
+      rm -rf /opt/schoolserver/xsce/*
+      ;;
+*)
+      rm -rf /opt/schoolserver/downloads/*
+      
+esac
