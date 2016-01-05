@@ -18,6 +18,7 @@ if [ $? -ne 0 ]; then
 		  reboot
 fi
 cp ../yum/rpmfusion.repo.secondary /etc/yum.repos.d
+mkdir -p /etc/xsce
 
 cd /root
 # the stock kernel does not have bridge module

@@ -7,7 +7,7 @@ if [ `id -u` -ne 0 ]; then
 fi
 systemctl enable olpc-dm.service
 ln -sf /lib/systemd/system/graphical.target /etc/systemd/system/default.target
-touch /home/olpc/.browser-at-boot
+touch /etc/xsce/browser-at-boot
 read -p "Use <ctl>C to abort the reboot. Or <Enter> to proceed. " ans
 #reboot
 systemctl restart olpc-dm

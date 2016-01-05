@@ -37,6 +37,7 @@ sed -i -e's|^Exec=.*|Exec=/bin/epiphany http://schoolserver.lan %U|' /usr/share/
 
 
 mkdir -p /opt/schoolserver
+mkdir -p /etc/xsce
 cd /opt/schoolserver
 git clone https://github.com/XSCE/xsce --depth 1
 

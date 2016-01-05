@@ -17,7 +17,7 @@
 #exit 0
 
 #there seems some comfusion in olpc-session active vs desktop so make our own
-if [ -f /home/olpc/.browser-at-boot ]; then
+if [ -f /etc/xsce/browser-at-boot ]; then
 	if [ -f /home/olpc/.olpc-active-desktop ]; then
 	   current=`cat /home/olpc/.olpc-active-desktop`
 	fi

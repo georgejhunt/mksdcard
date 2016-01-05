@@ -15,6 +15,7 @@ yum install -y git
 cd /root
 git clone https://github.com/georgejhunt/mksdcard
 cp /root/mksdcard/yum/rpmfusion.repo /etc/yum.repos.d
+mkdir -p /etc/xsce
 
 # Absolute path to this script.
 SCRIPT=$(readlink -f $0)
@@ -42,7 +43,7 @@ git clone https://github.com/XSCE/xsce-local --branch xo1
 # the setuid bit does not copy properly 
 chmod 4755 /usr/bin/xs-remote-on
 chmod 4755 /usr/bin/xs-remote-off
-gsettings set org.gnome.Epiphany restore-session-policy never
+su olpc -c "gsettings set org.gnome.Epiphany restore-session-policy never"
 sed -i -e's/^Exec=.*/Exec=file:///library/index.html %U/ /usr/share/applications/epiphany.desktop
 
 # establish a reasonable base of installed packages
