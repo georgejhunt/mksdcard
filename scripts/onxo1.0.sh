@@ -29,7 +29,7 @@ yum install -y git ansible tree vim firefox mlocate linux-firmware \
 	gstreamer1-plugins-bad-freeworld	gstreamer1-plugins-base-tools \
 	gstreamer1-plugins-good-extra	gstreamer1-plugins-bad-free \
 	gstreamer-plugins-ugly	gstreamer-plugins-bad \
-	gstreamer-ffmpeg gstreamer1-libav 
+	gstreamer-ffmpeg gstreamer1-libav man man-db man-pages
 
 mkdir -p /opt/schoolserver
 cd /opt/schoolserver
