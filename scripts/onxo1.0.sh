@@ -42,11 +42,11 @@ if [ ! -f /home/olpc/Activities/FotoToon.activity ];then
 fi
 if [ ! -f /home/olpc/Activities/TuxPaint.activity ];then
   wget http://download.unleashkids.org/HaitiOS/tux/TuxPaint-6.2.xo
-  cp TuxPaint-6.2.xo /home/olpc/Activities
+  unzip -d /home/olpc/Activities TuxPaint-6.2.xo
 fi
 if [ ! -f /home/olpc/Activities/TuxMath.activity ];then
   wget http://download.unleashkids.org/HaitiOS/tux/TuxMath-3.1.xo
-  cp TuxMath-3.1.xo /home/olpc/Activities
+  unzip -d /home/olpc/Activities TuxMath-3.1.xo
 fi
 
 mkdir -p /opt/schoolserver
