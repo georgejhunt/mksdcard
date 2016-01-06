@@ -1,4 +1,8 @@
 #!/bin/bash -x
+if [ `id -u` -ne 0 ]; then
+  echo "please become root to execute this command"
+  exit 1
+fi
 
 # Turn off services which permit remote access to this machine
 systemctl disable openvpn@xscenet
