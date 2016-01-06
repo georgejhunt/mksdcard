@@ -1,0 +1,4 @@
+#!/bin/bash
+# easy to remember way to go to GUI when in text mode
+systemctl start olpc-dm
+

@@ -1,0 +1,14 @@
+#!/bin/bash
+# script to compare two trees
+
+# Absolute path to this script.
+SCRIPT=$(readlink -f $0)
+# Absolute path this script is in.
+SCRIPTPATH=`dirname $SCRIPT`
+
+cd $SCRIPTPATH/../trees
+if [ $# -ne 2 ];then
+  echo 'enter 2 parameters of (1.0, 1.5, l.75, 4). quitting. . .'
+  exit 1
+fi
+diff -r $1 $2
