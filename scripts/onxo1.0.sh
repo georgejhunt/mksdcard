@@ -2,6 +2,11 @@
 # run this script after stock install of 13.2.5 to create enhanced SD card 
 # note to myself: This script may have been scp'd to /root as a bootstrap
 
+# Absolute path to this script.
+SCRIPT=$(readlink -f $0)
+# Absolute path this script is in.
+SCRIPTPATH=`dirname $SCRIPT`
+
 # the downloading requires more /tmp than in the olpc build
 grep size=200 /etc/fstab
 if [ $? -ne 0 ]; then
@@ -18,11 +23,6 @@ git clone https://github.com/georgejhunt/mksdcard
 cp /root/mksdcard/yum/rpmfusion.repo /etc/yum.repos.d
 mkdir -p /etc/xsce
 echo 32 > /etc/xsce/sd-size
-
-# Absolute path to this script.
-SCRIPT=$(readlink -f $0)
-# Absolute path this script is in.
-SCRIPTPATH=`dirname $SCRIPT`
 
 yum install -y git ansible tree vim firefox mlocate  \
 	gstreamer1-plugins-ugly	gstreamer1-plugins-bad-free-extras \
@@ -67,6 +67,9 @@ chmod 4755 /usr/bin/xs-remote-on
 chmod 4755 /usr/bin/xs-remote-off
 su olpc -c 'gsettings set org.gnome.Epiphany restore-session-policy never'
 sed -i -e's|^Exec=.*|Exec=/bin/epiphany file:///library/index.html %U|' /usr/share/applications/epiphany.desktop
+
+# make the default to display IIAB on boot
+xs-iiab
 
 echo "all done"
 
