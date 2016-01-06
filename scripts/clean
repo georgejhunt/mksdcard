@@ -7,9 +7,9 @@ then
   XO_VERSION=`cat /proc/device-tree/mfg-data/MN`
 fi
 
-SD-SIZE=
+SD_SIZE=
 if [ -f /etc/xsce/sd-size ];then
-  SD-SIZE=`cat /etc/xsce/sd-size`
+  SD_SIZE=`cat /etc/xsce/sd-size`
 fi
 
 case $XO_VERSION in
