@@ -55,6 +55,7 @@ fi
 
 #auto_size /dev/sdb2
 umount $PART
+umount /media/usb*
 e2fsck -f $PART
 resize2fs -M $PART
 
