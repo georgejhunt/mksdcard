@@ -36,8 +36,18 @@ yum reinstall -y tree epiphany nano gsettings
 updatedb
 
 cd
-wget http://activities.sugarlabs.org/es-ES/sugar/downloads/latest/4253/addon-4253-latest.xo
-unzip -d /home/olpc/Activities addon-4253-latest.xo
+if [ ! -f /home/olpc/Activities/FotoToon.activity ];then
+  wget http://activities.sugarlabs.org/es-ES/sugar/downloads/latest/4253/addon-4253-latest.xo
+  unzip -d /home/olpc/Activities addon-4253-latest.xo
+fi
+if [ ! -f /home/olpc/Activities/TuxPaint.activity ];then
+  wget http://download.unleashkids.org/HaitiOS/tux/TuxPaint-6.2.xo
+  cp TuxPaint-6.2.xo /home/olpc/Activities
+fi
+if [ ! -f /home/olpc/Activities/TuxMath.activity ];then
+  wget http://download.unleashkids.org/HaitiOS/tux/TuxMath-3.1.xo
+  cp TuxMath-3.1.xo /home/olpc/Activities
+fi
 
 mkdir -p /opt/schoolserver
 cd /opt/schoolserver

@@ -9,7 +9,7 @@
 rm -f /root/.ssh/*
 rm -f /etc/xsce/uuid
 rm -f /etc/xsce/handle
-rm -f /.olpc-configured
+#rm -f /.olpc-configured
 rm -f /home/olpc/.olpc-configured
 rm -rf /etc/NetworkManager/system-connections/*
 rm -f /etc/sysconfig/network-scripts/keys*
