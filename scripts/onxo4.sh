@@ -14,7 +14,7 @@ if [ $? -ne 0 ]; then
 		  sed -i -e 's|^vartmp.*$|vartmp	/vartmp	tmpfs	rw,size=200m	0	0|' /etc/fstab
         cp /home/olpc/.bash* /root/
         sed -i -e '/excludedocs/ d' /etc/rpm/macros.imgcreate
-#        sed -i -e 's/^TEMPORARY_STATE.*/TEMPORARY_STATE=no/' /etc/sysconfig/readonly-root
+        sed -i -e 's/^TEMPORARY_STATE.*/TEMPORARY_STATE=no/' /etc/sysconfig/readonly-root
 		  reboot
 fi
 cp ../yum/rpmfusion.repo.secondary /etc/yum.repos.d
@@ -25,9 +25,11 @@ cd /root
 wget http://download.unleashkids.org/xsce/downloads/os/kernel_4/kernel-3.5.7_xo4-20151216.1806.olpc.d520550.armv7hl.rpm
 yum -y localinstall ./kernel*
 
-gsettings set org.gnome.Epiphany restore-session-policy never
-sed -i  "s|^Exec=.*|Exec=epiphany http://schoolserver.lan \%U|" /usr/share/applications/epiphany.desktop
+su olpc -c 'gsettings set org.gnome.Epiphany restore-session-policy never'
+sed -i  's|^Exec=.*|Exec=epiphany http://myserver.lan \%U|' /usr/share/applications/epiphany.desktop
 
+# gcc 7.0 does not compile cmdsrv correctly
+yum -y remove gcc
 yum install -y git ansible tree vim firefox mlocate linux-firmware \
 	gstreamer1-plugins-ugly	gstreamer1-plugins-bad-free-extras \
 	gstreamer1-plugins-bad-freeworld	gstreamer1-plugins-base-tools \
@@ -35,16 +37,34 @@ yum install -y git ansible tree vim firefox mlocate linux-firmware \
 	gstreamer-plugins-ugly	gstreamer-plugins-bad \
 	gstreamer-ffmpeg gstreamer1-libav httpd 
 
+# accumulate the manual entries for selected programs already installed
+yum reinstall -y tree epiphany nano gsettings yum
+updatedb
+
 mkdir -p /opt/schoolserver
+mkdir -p /etc/xsce
 cd /opt/schoolserver
 git clone https://github.com/XSCE/xsce --depth 1
 
-# run the playbooks that install things we need on the xo1
-#cd /root
-#git clone https://github.com/XSCE/xsce-local --branch xo15
+# the Ansible playbook reboots if default target is not multiuser.target
+ln -sf /lib/systemd/system/multi-user.target default.target
 
-# install up to the console so that users can select their services
+# install selected services, and most of the software
+# put in a local_vars to select the desired services
+cp -f $SCRIPTPATH/resources/local_vars.yml /opt/schoolserver/xsce/vars/
+
+# the git repo at ka-lite errors out, after tree is copied, so just restart
+echo "cd /etc/schoolserver/xsce;./runansible">/etc/rc.d/rc.local
+chmod 755 /etc/rc.d/rc.local
+
 cd /opt/schoolserver/xsce
+./runansible
 
-# the following does a restart and keeps this script from completing
-./install-console # so just wait for the few minutes, and restart it
+ln -sf /lib/systemd/system/graphical.target default.target
+
+# copy the files that make this an unleashkids sdcard project
+cd $SCRIPTPATH
+./cp_4
+xs-desktop
+
+echo ALL DONE

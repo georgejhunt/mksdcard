@@ -32,7 +32,7 @@ yum install -y git ansible tree vim firefox mlocate  \
 	gstreamer-ffmpeg gstreamer1-libav man man-db man-pages tuxmath tuxpaint
 
 # accumulate the manual entries for selected programs already installed
-yum reinstall -y tree epiphany nano gsettings
+yum reinstall -y tree epiphany nano gsettings yum
 updatedb
 
 cd
