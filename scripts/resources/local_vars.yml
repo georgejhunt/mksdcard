@@ -10,3 +10,4 @@ munin_enabled: True
 rachel_enabled: True
 samba_enabled: True
 xsce_hostname: myserver
+hostapd_enabled: False
