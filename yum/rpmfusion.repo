@@ -1,5 +1,5 @@
-
 [rpmfusion-free]
+name=RPM Fusion for Fedora $releasever - Free
 baseurl=http://download1.rpmfusion.org/free/fedora/releases/$releasever/Everything/$basearch/os/
 enabled=1
 gpgcheck=0
@@ -12,12 +12,13 @@ gpgcheck=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmfusion-free-fedora-$releasever
 
 [rpmfusion-nonfree]
+name=RPM Fusion for Fedora $releasever - non-Free
 baseurl=http://download1.rpmfusion.org/nonfree/fedora/releases/$releasever/Everything/$basearch/os/
 enabled=1
 gpgcheck=0
 
 [rpmfusion-nonfree-updates]
-name=RPM Fusion for Fedora $releasever - Free - Updates
+name=RPM Fusion for Fedora $releasever - non-Free - Updates
 baseurl=http://download1.rpmfusion.org/nonfree/fedora/updates/$releasever/$basearch/
 enabled=1
 gpgcheck=0
