@@ -4,6 +4,7 @@ moodle_enabled: False
 xovis_enabled: False
 openvpn_enabled: True
 kiwix_enabled: True
+kalite_enabled: True
 vnstat_enabled: True
 awstats_enabled: True
 munin_enabled: True
