@@ -1,4 +1,8 @@
 #!/bin/bash -x
+if [ `id -u` -ne 0 ]; then
+  echo "please become root to execute this command"
+  exit 1
+fi
 
 # Set flags used by /bin/xs-handle-automatic
 touch /etc/xsce/openvpn_allowed

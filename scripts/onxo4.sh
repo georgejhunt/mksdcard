@@ -41,6 +41,21 @@ yum install -y git ansible tree vim firefox mlocate linux-firmware \
 yum reinstall -y tree epiphany nano gsettings yum
 updatedb
 
+cd
+if [ ! -f /home/olpc/Activities/FotoToon.activity ];then
+  wget http://activities.sugarlabs.org/es-ES/sugar/downloads/latest/4253/addon-4253-latest.xo
+  unzip -d /home/olpc/Activities addon-4253-latest.xo
+fi
+if [ ! -f /home/olpc/Activities/TuxPaint.activity ];then
+  wget http://download.unleashkids.org/HaitiOS/tux/TuxPaint-6.2.xo
+  unzip -d /home/olpc/Activities TuxPaint-6.2.xo
+fi
+if [ ! -f /home/olpc/Activities/TuxMath.activity ];then
+  wget http://download.unleashkids.org/HaitiOS/tux/TuxMath-3.1.xo
+  unzip -d /home/olpc/Activities TuxMath-3.1.xo
+fi
+
+
 mkdir -p /opt/schoolserver
 mkdir -p /etc/xsce
 cd /opt/schoolserver
