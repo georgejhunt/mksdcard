@@ -54,7 +54,18 @@ if [ ! -f /home/olpc/Activities/TuxMath.activity ];then
   wget http://download.unleashkids.org/HaitiOS/tux/TuxMath-3.1.xo
   unzip -d /home/olpc/Activities TuxMath-3.1.xo
 fi
-
+grep org.tuxmath /usr/share/sugar/data/activities.defaults
+if [ $? -ne 0 ]; then
+  echo org.tuxmath >> /usr/share/sugar/data/activities.defaults
+fi
+grep org.tuxpaint /usr/share/sugar/data/activities.defaults
+if [ $? -ne 0 ]; then
+  echo org.tuxpaint >> /usr/share/sugar/data/activities.defaults
+fi
+grep org.eq.FotoToon /usr/share/sugar/data/activities.defaults
+if [ $? -ne 0 ]; then
+  echo org.eq.FotoToon >> /usr/share/sugar/data/activities.defaults
+fi
 
 mkdir -p /opt/schoolserver
 mkdir -p /etc/xsce
