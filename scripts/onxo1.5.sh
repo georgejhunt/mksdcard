@@ -35,22 +35,26 @@ yum install -y git ansible tree vim firefox mlocate linux-firmware \
 	gstreamer1-plugins-bad-freeworld	gstreamer1-plugins-base-tools \
 	gstreamer1-plugins-good-extra	gstreamer1-plugins-bad-free \
 	gstreamer-plugins-ugly	gstreamer-plugins-bad \
-	gstreamer-ffmpeg gstreamer1-libav httpd tuxmath tuxpaint
+	gstreamer-ffmpeg gstreamer1-libav httpd tuxmath tuxpaint tuxtype
 
 # accumulate the manual entries for selected programs already installed
 yum reinstall -y tree epiphany nano gsettings yum
 updatedb
 
 cd
-if [ ! -f /home/olpc/Activities/FotoToon.activity ];then
-  wget http://activities.sugarlabs.org/es-ES/sugar/downloads/latest/4253/addon-4253-latest.xo
-  unzip -d /home/olpc/Activities addon-4253-latest.xo
+if [ ! -d /home/olpc/Activities/FotoToon.activity ];then
+  wget http://download.unleashkids.org/xsce/downloads/activities/fototoon-13.xo
+  unzip -d /home/olpc/Activities fototoon-13.xo
 fi
-if [ ! -f /home/olpc/Activities/TuxPaint.activity ];then
+if [ ! -d /home/olpc/Activities/TypingTurtle.activity ];then
+  wget http://download.unleashkids.org/xsce/downloads/activities/typing_turtle-29.xo
+  unzip -d /home/olpc/Activities typing_turtle-29.xo
+fi
+if [ ! -d /home/olpc/Activities/TuxPaint.activity ];then
   wget http://download.unleashkids.org/HaitiOS/tux/TuxPaint-6.2.xo
   unzip -d /home/olpc/Activities TuxPaint-6.2.xo
 fi
-if [ ! -f /home/olpc/Activities/TuxMath.activity ];then
+if [ ! -d /home/olpc/Activities/TuxMath.activity ];then
   wget http://download.unleashkids.org/HaitiOS/tux/TuxMath-3.1.xo
   unzip -d /home/olpc/Activities TuxMath-3.1.xo
 fi
@@ -65,6 +69,10 @@ fi
 grep org.eq.FotoToon /usr/share/sugar/data/activities.defaults
 if [ $? -ne 0 ]; then
   echo org.eq.FotoToon >> /usr/share/sugar/data/activities.defaults
+fi
+grep org.laptop.community.TypingTurtle /usr/share/sugar/data/activities.defaults
+if [ $? -ne 0 ]; then
+  echo org.laptop.community.TypingTurtle >> /usr/share/sugar/data/activities.defaults
 fi
 
 mkdir -p /opt/schoolserver
