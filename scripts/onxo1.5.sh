@@ -28,6 +28,8 @@ yum -y localinstall ./kernel*
 su olpc -c 'gsettings set org.gnome.Epiphany restore-session-policy never'
 sed -i -e 's|^Exec=.*|Exec=/bin/epiphany http://myserver.lan %U|' /usr/share/applications/epiphany.desktop
 
+# help named know the name of localhost
+sed -i -e 's/schooserver1/myserver/' /var/named-xs/school.internal.zone.db
 # gcc 7.0 does not compile cmdsrv correctly
 yum -y remove gcc
 yum install -y git ansible tree vim firefox mlocate linux-firmware \
