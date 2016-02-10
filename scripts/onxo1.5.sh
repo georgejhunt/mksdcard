@@ -100,5 +100,9 @@ cd /opt/schoolserver/xsce
 ln -sf /lib/systemd/system/graphical.target default.target
 cd $SCRIPTPATH
 $SCRIPTPATH/cp_15
+
+# turn off munin, which takes cpu every 5 minutes
+chmod 644 /bin/munin-cron
+
 xs-desktop
 echo ALL DONE

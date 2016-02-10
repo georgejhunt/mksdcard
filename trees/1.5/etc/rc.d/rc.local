@@ -24,7 +24,6 @@ NM_CONTROLLED=no
 HWADDR=$hardware_address
 DEVICE=wlan0
 EOF
-fi
 
 # If there is a USB dongle added, attach the dhclient to it
 if [ ! -f /etc/sysconfig/network-scripts/ifcfg-eth0 ]; then
@@ -45,7 +44,7 @@ TYPE=Bridge
 BOOTPROTO=none
 ONBOOT=yes
 IPADDR=172.18.96.1
-NETMASK=255.255.224.1
+NETMASK=255.255.224.0
 NM_CONTROLLED=yes
 DNS1=127.0.0.1
 DOMAIN=lan
@@ -53,5 +52,11 @@ NAME=xsce-LAN
 EOF
 fi
 
+# need a restart after setting up networking so it all comes up properly
+reboot
+fi
+
 # still do not know how to delay systemd start, so do it otherwise
+
+systemctl restart dhcpd.service
 systemctl restart hostapd.service

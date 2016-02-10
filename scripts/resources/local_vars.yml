@@ -7,8 +7,8 @@ kiwix_enabled: True
 kalite_enabled: True
 vnstat_enabled: True
 awstats_enabled: True
-munin_enabled: True
+munin_enabled: False
 rachel_enabled: True
 samba_enabled: True
 xsce_hostname: myserver
-hostapd_enabled: False
+hostapd_enabled: True
