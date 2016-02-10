@@ -75,6 +75,9 @@ if [ $? -ne 0 ]; then
   echo org.laptop.community.TypingTurtle >> /usr/share/sugar/data/activities.defaults
 fi
 
+# disable the renaming of wlan0 to eth0 -- a dongle wants to become eth0
+mv /lib/udev/rules.d/70-olpc-network.rules /lib/udev/rules.d/70-olpc-network.rules.disabled
+
 mkdir -p /opt/schoolserver
 mkdir -p /etc/xsce
 cd /opt/schoolserver
