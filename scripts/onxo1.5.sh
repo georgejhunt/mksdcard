@@ -22,7 +22,7 @@ mkdir -p /etc/xsce
 
 cd /root
 # the stock kernel does not have bridge module
-wget http://download.unleashkids.org/xsce/downloads/os/kernel_1.5/kernel-3.3.8_xo1.5-20150718.1548.olpc.313c677.i686.rpm
+wget http://download.unleashkids.org/xsce/downloads/os/kernel_1.5/kernel-3.3.8_xo1.5-20160102.1250.06CE.8ddad46.i686.rpm
 yum -y localinstall ./kernel*
 
 su olpc -c 'gsettings set org.gnome.Epiphany restore-session-policy never'
@@ -42,6 +42,12 @@ yum install -y git ansible tree vim firefox mlocate linux-firmware \
 # accumulate the manual entries for selected programs already installed
 yum reinstall -y tree epiphany nano gsettings yum
 updatedb
+
+# copy the firmware for thinfirm 
+cp $SCRIPTIR/../firmware/15/* /lib/firmware
+
+# tell hostapd to manipulate wlan0
+sed -i -e 's/^interface.*/interface=wlan0/' /etc/hostapd/hostapd.conf
 
 cd
 if [ ! -d /home/olpc/Activities/FotoToon.activity ];then
@@ -78,7 +84,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # disable the renaming of wlan0 to eth0 -- a dongle wants to become eth0
-mv /lib/udev/rules.d/70-olpc-network.rules /lib/udev/rules.d/70-olpc-network.rules.disabled
+mv /lib/udev/rules.d/70-olpc-net.rules /lib/udev/rules.d/70-olpc-net.rules.disabled
 
 mkdir -p /opt/schoolserver
 mkdir -p /etc/xsce
@@ -93,7 +99,7 @@ ln -sf /lib/systemd/system/multi-user.target default.target
 cp -f $SCRIPTPATH/resources/local_vars.yml /opt/schoolserver/xsce/vars/
 
 # the git repo at ka-lite errors out, after tree is copied, so just restart
-echo "cd /etc/schoolserver/xsce;./runansible">/etc/rc.d/rc.local
+echo "cd /opt/schoolserver/xsce;./runansible">/etc/rc.d/rc.local
 chmod 755 /etc/rc.d/rc.local
 
 cd /opt/schoolserver/xsce
