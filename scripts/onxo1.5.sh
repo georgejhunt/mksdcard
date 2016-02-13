@@ -22,7 +22,7 @@ mkdir -p /etc/xsce
 
 cd /root
 # the stock kernel does not have bridge module
-wget http://download.unleashkids.org/xsce/downloads/os/kernel_1.5/kernel-3.3.8_xo1.5-20160102.1250.06CE.8ddad46.i686.rpm
+wget http://download.unleashkids.org/xsce/downloads/os/xo1.5/kernel-3.3.8_xo1.5-20160102.1250.06CE.8ddad46.i686.rpm
 yum -y localinstall ./kernel*
 
 su olpc -c 'gsettings set org.gnome.Epiphany restore-session-policy never'
