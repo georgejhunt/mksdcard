@@ -18,11 +18,24 @@ As an aside if preparing to make a new distribution, do the following::
 4. The script to execute is mkxscard/scripts/shrink_olpc.sh (this script defaults to schrinking /dev/sdb. If you are using an XO, change line 4 to "DEVICE=/dev/sda" (the USB SD card reader's device is usually /dev/sd<something>)
 5. The script will shrink the second partition, dd it to a file, give that fine the name you specify, and zip it up for easy uploading and downloading.
 
-###XO1.5 Cookbook
+###XO1.5 Cookbook -- Access Point
 --------------
-* On a linux machine, "git clone https://github.com/georgejhunt/os-builer --branch sdcard"
-* Run the os-builder: "os-builder /root/mksdcard/olpc-os-xo1.5.ini"(5:44 --takes about 30min)
 
+* Load the OLPC 13.2.6 OS onto an SD card 
+   
+```
+    ok> devalias fsdisk ext:0
+    ok> fs-update u:\32018o1.zd
+```
+* Boot and put online
+```
+    yum -y install git
+    git clone https://github.com/georgejhunt/mksdcard
+    cd mksdcard/scripts
+    ./onxo1.5.sh
+    (this reboots immediately)
+    ./onxo1.5.sh
+```
 ###XO4 Cookbook
 I may need to add "iw dev wlan0 set 4addr" to rc.local in order for bridging to work.  But it seems maybe to persist through a reboot. (But has twice been required to get bridging configured -- and it seems so non-intuitive.)
 
