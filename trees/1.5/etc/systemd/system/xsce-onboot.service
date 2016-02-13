@@ -1,0 +1,11 @@
+[Unit]
+Description=Small script to clean up offline install, set up networks,etc
+Requires=network.target
+After=network.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/xs-onboot
+
+[Install]
+WantedBy=multi-user.target

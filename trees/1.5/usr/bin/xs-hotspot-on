@@ -1,0 +1,9 @@
+#!/bin/bash 
+# Turn on the hotspot capability of the xo1.5
+
+touch /etc/xsce/access-point
+source /usr/bin/xs-onboot
+
+# if there is internet, turn it on during/after first boot
+systemctl disable openvpn@xscenet
+#reboot
