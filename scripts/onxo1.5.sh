@@ -103,10 +103,10 @@ echo "cd /opt/schoolserver/xsce;./runansible">/etc/rc.d/rc.local
 chmod 755 /etc/rc.d/rc.local
 
 cd /opt/schoolserver/xsce
-./runansible
+./runtags download,download2
+./install-console
 
 ln -sf /lib/systemd/system/graphical.target default.target
-cd $SCRIPTPATH
 $SCRIPTPATH/cp_15
 
 # turn off munin, which takes cpu every 5 minutes

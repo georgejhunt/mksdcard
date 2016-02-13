@@ -98,6 +98,9 @@ DNS1=127.0.0.1
 DOMAIN=lan
 NAME=xsce-LAN
 EOF
+
+# ask NetworkManager to notice our changes
+nmcli connection reload
 fi
 
 fi
