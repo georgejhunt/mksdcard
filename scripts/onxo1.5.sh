@@ -44,7 +44,7 @@ yum reinstall -y tree epiphany nano gsettings yum
 updatedb
 
 # copy the firmware for thinfirm 
-cp $SCRIPTIR/../firmware/15/* /lib/firmware
+cp ../firmware/15/* /lib/firmware
 
 # tell hostapd to manipulate wlan0
 sed -i -e 's/^interface.*/interface=wlan0/' /etc/hostapd/hostapd.conf
