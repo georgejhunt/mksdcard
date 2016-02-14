@@ -14,10 +14,12 @@ echo "$UUID" > /etc/xsce/uuid
 # following happens every boot
 ping -c 3 8.8.8.8
 if [ -f /etc/xsce/openvpn_allowed -a $? -eq 0 ]; then
+    systemctl unmask openvpn@xscenet.service
     systemctl enable openvpn@xscenet.service
     systemctl restart openvpn@xscenet.service
 else
   systemctl disable openvpn@xscenet.service
+  systemctl mask openvpn@xscenet.service
   systemctl stop openvpn@xscenet.service
 fi
 
@@ -40,8 +42,8 @@ fi
 # if access-point desired, and any ifcfg has our hw_addr, delete it
 if [ -f /etc/xsce/access-point  ]; then
     hardware_address=`cat /sys/class/net/wlan0/address`
-    grep $hardware_address /etc/sysconfig/network-scripts/ifcfg-* | \
-	gawk '{print $1}' | xargs rm -f
+    egrep -irn $hardware_address /etc/sysconfig/network-scripts/ifcfg-* | \
+	gawk -F":" '{print $1}' | xargs rm -f
 fi
 
 # for xo1.5, the bridge config file needs the hardware address
