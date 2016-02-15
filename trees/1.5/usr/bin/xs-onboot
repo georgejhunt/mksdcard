@@ -1,37 +1,24 @@
 #!/bin/bash -x
 # script that can run on boot, in the background
 
-
-# Record UUID in case SD card is transfered to another XO
-UUID=`cat /proc/device-tree/mfg-data/SN`
-echo "$UUID" > /etc/xsce/uuid
-
-# Encode vpn handle to /etc/xsce/handle
-
-# MODIFY BELOW TO CHANGE MACHINE'S VPN /etc/xsce/handle FOR http://xscenet.net
-/bin/xs-handle-automatic
-
 # following happens every boot
-ping -c 3 8.8.8.8
-if [ -f /etc/xsce/openvpn_allowed -a $? -eq 0 ]; then
-    systemctl unmask openvpn@xscenet.service
-    systemctl enable openvpn@xscenet.service
-    systemctl restart openvpn@xscenet.service
+ping -c 1 8.8.8.8
+ping_result=$?
+# see if openvpn is already running
+ps -e|grep openvpn
+vpn_result=$?
+if [ -f /etc/xsce/openvpn_allowed -a $ping_result -eq 0 ]; then
+    if [ $vpn_result -ne 0 ]; then
+      systemctl unmask openvpn@xscenet.service
+      systemctl enable openvpn@xscenet.service
+      systemctl start openvpn@xscenet.service
+    fi
 else
   systemctl disable openvpn@xscenet.service
   systemctl mask openvpn@xscenet.service
   systemctl stop openvpn@xscenet.service
 fi
 
-# disable recursive name lookup if no internet access
-if [ -h /var/named-xs/named.root ]; then
-   ping -c 3 8.8.8.8
-   if [ $? -eq 0 ]; then 
-     ln -sf /var/named-xs/named.root.real /var/named-xs/named.root
-   else
-     ln -sf /var/named-xs/named.zero /var/named-xs/named.root
-   fi
-fi
 
 # if not access-point desired, and "br0" exists in ifcfg-wlan0, delete it
 grep br0 /etc/sysconfig/network-scripts/ifcfg-wlan0
@@ -43,7 +30,7 @@ fi
 if [ -f /etc/xsce/access-point  ]; then
     hardware_address=`cat /sys/class/net/wlan0/address`
     egrep -irn $hardware_address /etc/sysconfig/network-scripts/ifcfg-* | \
-	gawk -F":" '{print $1}' | xargs rm -f
+	        gawk -F":" '{print $1}' | xargs rm -f
 fi
 
 # for xo1.5, the bridge config file needs the hardware address
@@ -101,8 +88,6 @@ DOMAIN=lan
 NAME=xsce-LAN
 EOF
 
-# ask NetworkManager to notice our changes
-nmcli connection reload
 fi
 
 fi

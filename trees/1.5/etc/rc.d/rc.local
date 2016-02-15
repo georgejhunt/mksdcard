@@ -9,8 +9,19 @@ echo "$UUID" > /etc/xsce/uuid
 # MODIFY BELOW TO CHANGE MACHINE'S VPN /etc/xsce/handle FOR http://xscenet.net
 /bin/xs-handle-automatic
 
-
 # still do not know how to delay systemd start, so do it otherwise
+sleep 20
+
+ping -c 1 8.8.8.8
+ping_result=$?
+# disable recursive name lookup if no internet access
+if [ -h /var/named-xs/named.root ]; then
+   if [ $ping_result -eq 0 ]; then 
+     ln -sf /var/named-xs/named.root.real /var/named-xs/named.root
+   else
+     ln -sf /var/named-xs/named.zero /var/named-xs/named.root
+   fi
+fi
 
 systemctl restart dhcpd.service
 systemctl restart hostapd.service
