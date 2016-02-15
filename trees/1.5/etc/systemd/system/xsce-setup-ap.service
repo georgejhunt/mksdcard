@@ -1,0 +1,10 @@
+[Unit]
+Description=Script to set HWADDR in /etc/sysconfig/network-scripts/ifcfg-wlan0
+Wants network-pre.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/xs-setup-ap
+
+[Install]
+WantedBy=multi-user.target
