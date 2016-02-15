@@ -16,10 +16,15 @@ ping -c 1 8.8.8.8
 ping_result=$?
 # disable recursive name lookup if no internet access
 if [ -h /var/named-xs/named.root ]; then
+   before=`readlink -f /var/named-xs/named.root`
    if [ $ping_result -eq 0 ]; then 
      ln -sf /var/named-xs/named.root.real /var/named-xs/named.root
    else
      ln -sf /var/named-xs/named.zero /var/named-xs/named.root
+   fi
+   after=`readlink -f /var/named-xs/named.root`
+   if [ $before != $after ]; then
+      systemctl restart named.service
    fi
 fi
 

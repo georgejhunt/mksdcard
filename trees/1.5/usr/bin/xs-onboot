@@ -34,7 +34,6 @@ if [ -f /etc/xsce/access-point  ]; then
 fi
 
 # for xo1.5, the bridge config file needs the hardware address
-if [ ! -f /etc/sysconfig/network-scripts/ifcfg-wlan0 ]; then
 logger -s writing ifcfg-wlan0
 if [ ! -h /sys/class/net/wlan0 ]; then
    sleep 5
@@ -90,4 +89,3 @@ EOF
 
 fi
 
-fi
