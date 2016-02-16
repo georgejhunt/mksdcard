@@ -2,24 +2,6 @@
 # script that can run on boot, in the background
 
 # following happens every boot
-ping -c 1 8.8.8.8
-ping_result=$?
-# see if openvpn is already running
-ps -e|grep openvpn
-vpn_result=$?
-if [ -f /etc/xsce/openvpn_allowed -a $ping_result -eq 0 ]; then
-    if [ $vpn_result -ne 0 ]; then
-      systemctl unmask openvpn@xscenet.service
-      systemctl enable openvpn@xscenet.service
-      systemctl start openvpn@xscenet.service
-    fi
-else
-  systemctl disable openvpn@xscenet.service
-  systemctl mask openvpn@xscenet.service
-  systemctl stop openvpn@xscenet.service
-fi
-
-
 # if not access-point desired, and "br0" exists in ifcfg-wlan0, delete it
 grep br0 /etc/sysconfig/network-scripts/ifcfg-wlan0
 if [ ! -f /etc/xsce/access-point -a $? -eq 0 ]; then
@@ -34,7 +16,6 @@ if [ -f /etc/xsce/access-point  ]; then
 fi
 
 # for xo1.5, the bridge config file needs the hardware address
-if [ ! -f /etc/sysconfig/network-scripts/ifcfg-wlan0 ]; then
 logger -s writing ifcfg-wlan0
 if [ ! -h /sys/class/net/wlan0 ]; then
    sleep 5
@@ -90,4 +71,3 @@ EOF
 
 fi
 
-fi

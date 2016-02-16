@@ -14,12 +14,32 @@ sleep 20
 
 ping -c 1 8.8.8.8
 ping_result=$?
+# see if openvpn is already running
+ps -e|grep openvpn
+vpn_result=$?
+if [ -f /etc/xsce/openvpn_allowed -a $ping_result -eq 0 ]; then
+    if [ $vpn_result -ne 0 ]; then
+      systemctl unmask openvpn@xscenet.service
+      systemctl enable openvpn@xscenet.service
+      systemctl start openvpn@xscenet.service
+    fi
+else
+  systemctl disable openvpn@xscenet.service
+  systemctl mask openvpn@xscenet.service
+  systemctl stop openvpn@xscenet.service
+fi
+
 # disable recursive name lookup if no internet access
 if [ -h /var/named-xs/named.root ]; then
+   before=`readlink -f /var/named-xs/named.root`
    if [ $ping_result -eq 0 ]; then 
      ln -sf /var/named-xs/named.root.real /var/named-xs/named.root
    else
      ln -sf /var/named-xs/named.zero /var/named-xs/named.root
+   fi
+   after=`readlink -f /var/named-xs/named.root`
+   if [ $before != $after ]; then
+      systemctl restart named.service
    fi
 fi
 
