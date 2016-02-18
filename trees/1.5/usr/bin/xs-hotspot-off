@@ -7,5 +7,7 @@ fi
 
 rm -f /etc/xsce/access-point
 source /usr/bin/xs-onboot
+systemctl unmask wpa_supplicant
+systemctl enable wpa_supplicant
 
 reboot

@@ -10,4 +10,12 @@ source /usr/bin/xs-onboot
 
 # if there is internet, turn it on during/after first boot
 systemctl disable openvpn@xscenet
+systemctl disable wpa_supplicant
+systemctl mask wpa_supplicant
+
+# if a paramater was specified, write to hostapd ssid
+if [ $# -eq 1 ]; then
+  ssid=`echo $1 | sed "s/\"//g"`
+  sed "s/^ssid*/ssid=$ssid" /etc/hostapd/hostapd.conf
+fi
 reboot

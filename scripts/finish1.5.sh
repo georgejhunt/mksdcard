@@ -6,6 +6,9 @@ SCRIPT=$(readlink -f $0)
 # Absolute path this script is in.
 SCRIPTPATH=`dirname $SCRIPT`
 
+# help named know the name of localhost
+sed -i -e 's/schooserver1/myserver/' /var/named-xs/school.internal.zone.db
+
 # copy the whole configuration tree to the target machine
 $SCRIPTPATH/cp_15
 
@@ -20,5 +23,11 @@ mv /var/named-xs/named.root /var/named-xs/named.root.real
 # default startup is in  AP mode, no internet
 ln -sf /var/named-xs/named.zero /var/named-xs/named.root
 
+# we want GUI at boot
+ln -sf /lib/systemd/system/graphical.target default.target
+
 # switch the variables so that it defaults to sugar desktop
-xs-desktop
+xs-iiab
+
+echo "ALL DONE"
+

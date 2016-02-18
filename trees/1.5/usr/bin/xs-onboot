@@ -11,8 +11,14 @@ fi
 # if access-point desired, and any ifcfg has our hw_addr, delete it
 if [ -f /etc/xsce/access-point  ]; then
     hardware_address=`cat /sys/class/net/wlan0/address`
-    egrep -irn $hardware_address /etc/sysconfig/network-scripts/ifcfg-* | \
-	        gawk -F":" '{print $1}' | xargs rm -f
+    file_list=`ls /etc/sysconfig/network-scripts/ifcfg-*|grep -v -e wlan0|\
+	gawk '{printf("%s ",$1)}'`
+    for f in $file_list;do
+        grep $hardware_address $f
+        if [ $? -eq 0 ]; then
+           rm -f $f
+        fi
+    done
 fi
 
 # for xo1.5, the bridge config file needs the hardware address

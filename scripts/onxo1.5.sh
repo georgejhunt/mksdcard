@@ -28,8 +28,6 @@ yum -y localinstall ./kernel*
 su olpc -c 'gsettings set org.gnome.Epiphany restore-session-policy never'
 sed -i -e 's|^Exec=.*|Exec=/bin/epiphany http://myserver.lan %U|' /usr/share/applications/epiphany.desktop
 
-# help named know the name of localhost
-sed -i -e 's/schooserver1/myserver/' /var/named-xs/school.internal.zone.db
 # gcc 7.0 does not compile cmdsrv correctly
 yum -y remove gcc
 yum install -y git ansible tree vim firefox mlocate linux-firmware \
@@ -49,6 +47,10 @@ cp ../firmware/15/* /lib/firmware
 # tell hostapd to manipulate wlan0
 sed -i -e 's/^interface.*/interface=wlan0/' /etc/hostapd/hostapd.conf
 
+# tell dhcpd not to try to update named
+sec -i -e 's/^ddns-update-style.*/ddns-update-style none;/' /etc/dhcpd-xs.conf
+
+# put downloaded stuff in /root
 cd
 if [ ! -d /home/olpc/Activities/FotoToon.activity ];then
   wget http://download.unleashkids.org/xsce/downloads/activities/fototoon-13.xo
@@ -106,11 +108,4 @@ cd /opt/schoolserver/xsce
 ./runtags download,download2
 ./install-console
 
-ln -sf /lib/systemd/system/graphical.target default.target
-$SCRIPTPATH/cp_15
-
-# turn off munin, which takes cpu every 5 minutes
-chmod 644 /bin/munin-cron
-
-xs-desktop
-echo ALL DONE
+echo "To complete the install -- run ./finish1.5.sh"

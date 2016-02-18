@@ -67,9 +67,6 @@ ONBOOT=yes
 DEVICE=eth0
 EOF
 
-# enable the service that sets the HWADDR in ifcfg-wlan0
-systemctl enable xsce-setup-ap.service
-
 cd /root
 
 # ATTEMPT (not yet working!) to delete Sugar nick, so 1st boot's not corrupted w/ stale nick!
