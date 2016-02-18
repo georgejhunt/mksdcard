@@ -35,6 +35,7 @@ As an aside if preparing to make a new distribution, do the following::
     ./onxo1.5.sh
     (this reboots immediately)
     ./onxo1.5.sh
+    ./finish1.5.sh
 ```
 ###XO4 Cookbook
 I may need to add "iw dev wlan0 set 4addr" to rc.local in order for bridging to work.  But it seems maybe to persist through a reboot. (But has twice been required to get bridging configured -- and it seems so non-intuitive.)
@@ -48,9 +49,4 @@ mkxo10.sh -- script which accepts an os-builder image name (assumed to be in /ro
 xo-custom -- written by Jerry Vonau, incorporated into mktinycorexo  by James Cameron, perhaps useful in doing a chroot, and all of the assembly on a SD card on a larger machine.
 
 onxo10.sh -- originally written for the xo1, to implement the additional functions (openvpn, sshd, kiwix, maybe apache). But then I tested it on the XO1.5, and added the phrase to download and install my custom kernel (which includes the bridge module needed for wifi networking). The obvious next step is break up onxo10 into onxo1.0.sh, and onxo1.5.sh.
-XO1.5
-=====
-The preference is to use OS builder to generate the base image (if gnome works on the 1.5) because I can disable the funny chroot/file layout required by Quanta, and the update in the field strategy.
-
-Three times, I've encoundered pip errors during loader process regarding __dso_handle. This time I yum removed gcc-4.7, and "yum install compat-gcc-43".
 
