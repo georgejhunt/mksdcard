@@ -1,0 +1,14 @@
+#!/bin/bash -x
+# enable the masquerate function in iptables
+if [ `id -u` -ne 0 ]; then
+  echo "please become root to execute this command"
+  exit 1
+fi
+if [ $# -eq 1 ]; then
+  wan=$1
+else
+  wan=wlan0
+fi
+echo $wan > /etc/sysconfig/xs_wan_iface
+xs-gen-iptables
+systemctl restart iptables.service
