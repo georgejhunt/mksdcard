@@ -16,6 +16,7 @@ systemctl mask wpa_supplicant
 # if a paramater was specified, write to hostapd ssid
 if [ $# -eq 1 ]; then
   ssid=`echo $1 | sed "s/\"//g"`
-  sed "s/^ssid*/ssid=$ssid" /etc/hostapd/hostapd.conf
+  ssid1=`echo $ssid | sed "s/\'//g"`
+  sed -i -e "s/^ssid.*/ssid=$ssid1/" /etc/hostapd/hostapd.conf
 fi
 reboot

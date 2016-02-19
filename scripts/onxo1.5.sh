@@ -47,9 +47,6 @@ cp ../firmware/15/* /lib/firmware
 # tell hostapd to manipulate wlan0
 sed -i -e 's/^interface.*/interface=wlan0/' /etc/hostapd/hostapd.conf
 
-# tell dhcpd not to try to update named
-sec -i -e 's/^ddns-update-style.*/ddns-update-style none;/' /etc/dhcpd-xs.conf
-
 # put downloaded stuff in /root
 cd
 if [ ! -d /home/olpc/Activities/FotoToon.activity ];then
