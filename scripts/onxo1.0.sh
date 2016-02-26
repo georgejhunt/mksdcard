@@ -57,6 +57,7 @@ cp /root/mksdcard/config/* /opt/schoolserver/xsce
 cd /opt/schoolserver/xsce
 # execute the specialized playbook that only installs openvpn and kiwix
 ./xo1-install
+exit 0
 
 cd $SCRIPTPATH
 # do the sparse copy of files that are unique to this unleashkids version
