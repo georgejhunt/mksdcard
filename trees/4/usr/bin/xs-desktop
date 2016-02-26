@@ -8,4 +8,4 @@ fi
 ln -sf /lib/systemd/system/graphical.target /etc/systemd/system/default.target
 systemctl enable olpc-dm.service
 systemctl start olpc-dm.service
-rm -f /etc/xsce/browser-at-boot
+rm -f /etc/xsce/browser_at_boot

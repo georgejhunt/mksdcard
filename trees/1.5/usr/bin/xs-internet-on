@@ -7,7 +7,7 @@ fi
 if [ $# -eq 1 ]; then
   wan=$1
 else
-  wan=wlan0
+  wan=eth0
 fi
 echo $wan > /etc/sysconfig/xs_wan_iface
 xs-gen-iptables

@@ -5,7 +5,7 @@ if [ `id -u` -ne 0 ]; then
   exit 1
 fi
 
-rm -f /etc/xsce/access-point
+rm -f /etc/xsce/access_point
 source /usr/bin/xs-onboot
 systemctl unmask wpa_supplicant
 systemctl enable wpa_supplicant
