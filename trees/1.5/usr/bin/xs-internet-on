@@ -9,6 +9,6 @@ if [ $# -eq 1 ]; then
 else
   wan=eth0
 fi
-echo $wan > /etc/sysconfig/xs_wan_iface
+echo $wan > /etc/sysconfig/xs_wan_device
 xs-gen-iptables
 systemctl restart iptables.service
