@@ -9,7 +9,7 @@
 rm -f /root/.ssh/*
 rm -f /etc/xsce/uuid
 rm -f /etc/xsce/handle
-touch /etc/xsce/access-point
+touch /etc/xsce/access_point
 # the following instructs olpc's initramfs to expand the second partition
 rm -f /.olpc-configured
 rm -f /home/olpc/.olpc-configured

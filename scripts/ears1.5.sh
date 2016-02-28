@@ -37,7 +37,7 @@ gsettings set org.gnome.Epiphany restore-session-policy never
 sed -i -e's|^Exec=.*|Exec=/bin/epiphany http://schoolserver.lan %U|' /usr/share/applications/epiphany.desktop
 
 # communicate to rc.local that this is an access point
-touch /etc/xsce/access-point
+touch /etc/xsce/access_point
 
 mkdir -p /opt/schoolserver
 cd /opt/schoolserver

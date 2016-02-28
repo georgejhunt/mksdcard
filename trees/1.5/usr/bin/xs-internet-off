@@ -4,6 +4,6 @@ if [ `id -u` -ne 0 ]; then
   echo "please become root to execute this command"
   exit 1
 fi
-echo "" > /etc/sysconfig/xs_wan_iface
+echo "" > /etc/sysconfig/xs_wan_device
 xs-gen-iptables
 systemctl restart iptables.service
