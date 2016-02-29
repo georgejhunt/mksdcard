@@ -13,7 +13,8 @@ cp -f /usr/share/plymouth/themes/olpc/xo-remote-warning.png /usr/share/plymouth/
 
 # Turn on services which permit remote access to this machine
 systemctl unmask openvpn@xscenet
-systemctl enable openvpn@xscenet
+# decided to let NM dispatcher start it when it is up
+#systemctl enable openvpn@xscenet
 systemctl restart openvpn@xscenet
 systemctl enable sshd.service
 systemctl start sshd.service
