@@ -12,7 +12,8 @@ touch /etc/xsce/sshd_allowed
 cp -f /usr/share/plymouth/themes/olpc/xo-remote-warning.png /usr/share/plymouth/themes/olpc/xo.png
 
 # Turn on services which permit remote access to this machine
-systemctl enable openvpn@xscenet
+# if there is no network,having openvpn start at boot slow/stalls boot
+#systemctl enable openvpn@xscenet
 systemctl restart openvpn@xscenet
 systemctl enable sshd.service
 systemctl start sshd.service
