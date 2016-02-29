@@ -30,6 +30,9 @@ sec -i -e 's/^ddns-update-style.*/ddns-update-style none;/' /etc/dhcpd-xs.conf
 # we want GUI at boot
 ln -sf /lib/systemd/system/graphical.target default.target
 
+# enable the access point function
+xs-hotspot-on
+
 # switch the variables so that it defaults to sugar desktop
 xs-iiab
 
