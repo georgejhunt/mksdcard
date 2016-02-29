@@ -60,7 +60,7 @@ e2fsck -f $PART
 resize2fs -M $PART
 
 resize_image auto
-umont $PART
+umount $PART
 e2fsck -f $PART
 read -p "what is filename for this image? " FILENAME
 FILENAME=$FILENAME.img
