@@ -4,17 +4,18 @@
 # Written by C. Scott Ananian <cscott@laptop.org>
 if="$1"
 updown="$2"
-if [[ "$updown" = "up" && "$if" == "eth0" ]]; then
+if [[ "$updown" = "up" && -f /etc/xsce/openvpn_allowed ]]; then
   gateway=
   loop=1
   while [[ -z $gateway && $loop < 10 ]]; do
-    gateway=`netstat -rn|grep eth0|grep UG|gawk '{print $2}'`
+    gateway=`netstat -rn|grep UG|gawk '{print $2}'`
+    sleep 1
     (( loop++ ))
   done
   if [ ! -z $gateway ]; then
-	ping -c 3 -i 3 10.8.0.1
-	if [ $? -ne 0 ]; then
-	  /usr/bin/systemctl restart openvpn@xscenet.service
-        fi
+   	ping -c 3 -i 3 10.8.0.1
+	  if [ $? -ne 0 ]; then
+	    /usr/bin/systemctl restart openvpn@xscenet.service
+    fi
   fi
 fi
