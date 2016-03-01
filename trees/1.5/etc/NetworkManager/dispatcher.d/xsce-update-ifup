@@ -5,6 +5,9 @@
 if="$1"
 updown="$2"
 if [[ "$updown" = "up" && -f /etc/xsce/openvpn_allowed ]]; then
+  if [[ "$if" = "wlan0" && -f /etc/xsce/access_point ]]; then
+    exit 0
+  fi
   gateway=
   loop=1
   while [[ -z $gateway && $loop < 10 ]]; do
@@ -13,7 +16,7 @@ if [[ "$updown" = "up" && -f /etc/xsce/openvpn_allowed ]]; then
     (( loop++ ))
   done
   if [ ! -z $gateway ]; then
-   	ping -c 3 -i 3 10.8.0.1
+   	ping -c 2  10.8.0.1
 	  if [ $? -ne 0 ]; then
 	    /usr/bin/systemctl restart openvpn@xscenet.service
     fi
