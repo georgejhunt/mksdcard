@@ -42,6 +42,7 @@ yum reinstall -y tree epiphany nano gsettings yum
 updatedb
 
 # copy the firmware for thinfirm 
+cd $SCRIPTPATH
 cp ../firmware/15/* /lib/firmware
 
 # tell hostapd to manipulate wlan0
@@ -86,7 +87,6 @@ fi
 mv /lib/udev/rules.d/70-olpc-net.rules /lib/udev/rules.d/70-olpc-net.rules.disabled
 
 mkdir -p /opt/schoolserver
-mkdir -p /etc/xsce
 cd /opt/schoolserver
 git clone https://github.com/XSCE/xsce --depth 1
 
