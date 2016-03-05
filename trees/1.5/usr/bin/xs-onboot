@@ -14,7 +14,7 @@ if [ -f /etc/xsce/access_point  ]; then
     file_list=`ls /etc/sysconfig/network-scripts/ifcfg-*|grep -v -e wlan0|\
 	gawk '{printf("%s ",$1)}'`
     for f in $file_list;do
-        grep $hardware_address $f
+        grep -i $hardware_address $f
         if [ $? -eq 0 ]; then
            rm -f $f
         fi

@@ -4,12 +4,16 @@
 
 MODEL=`cat /proc/device-tree/mfg-data/MN`
 UUID=`cat /proc/device-tree/mfg-data/SN`
+YYMMDD=160101
+if [ -f /etc/xsce/ukids_yymmdd ]; then
+  YYMMDD=`cat /etc/xsce/ukids_yymmdd`
+fi
 SNIPPEDUUID=${UUID:6:11}
 FIRMWARE=`cat /proc/device-tree/openprom/model`
 FIRMWARE=`echo $FIRMWARE | sed 's/^....//' | sed 's/ .*//'`
 OS=`cat /etc/issue`
 OS=`echo $OS | sed 's/^........//' | sed 's/ .*//'`
-UNLEASHVERSION="160226-32GB-en-es-RC1"    # SET VERSION TO THE LEFT!
+UNLEASHVERSION="$YYMMDD-32GB-en-es-RC1"    # SET VERSION TO THE LEFT!
 SUGARNAME=`su - olpc -c "gsettings get org.sugarlabs.user nick" 2>/dev/null`
 SUGARNAME=`echo $SUGARNAME | sed 's/ /_/g' | sed 's/[^-_a-zA-Z0-9]//g'`
 

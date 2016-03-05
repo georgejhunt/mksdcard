@@ -1,10 +1,12 @@
 #!/bin/bash
-
 # Clean machine for shipment, removing personal/sensitive data.
 
 # See also /bin/xs-sysprep which calls this entire routine, then cleans more thoroughly,
 # prior to final shipment.
 
+if [ $# -eq 1 ];then
+  echo $1>/etc/xsce/ukids_yymmdd
+fi
 # cp restorebashrc /root/.bashrc
 rm -f /root/.ssh/*
 rm -f /etc/xsce/uuid
@@ -71,7 +73,9 @@ cd /root
 
 # ATTEMPT (not yet working!) to delete Sugar nick, so 1st boot's not corrupted w/ stale nick!
 su - olpc -c 'gsettings reset org.sugarlabs.user nick' 2>dev/null
+su - olpc -c 'gsettings reset org.sugarlabs.user color' 2>dev/null
 # su - olpc -c 'gsettings set org.sugarlabs.user nick DEFAULT'
 
 # Turn on OpenVPN & ssh daemons (may be gratuitous if xs-sysprep then turns them off, ah well!)
 /bin/xs-remote-on
+echo -e "\n\nRemember to use xs-betaprep YYMMDD, if this is a new version\n\n"
