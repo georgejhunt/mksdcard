@@ -35,7 +35,7 @@ yum install -y git ansible tree vim firefox mlocate linux-firmware \
 	gstreamer1-plugins-bad-freeworld	gstreamer1-plugins-base-tools \
 	gstreamer1-plugins-good-extra	gstreamer1-plugins-bad-free \
 	gstreamer-plugins-ugly	gstreamer-plugins-bad \
-	gstreamer-ffmpeg gstreamer1-libav httpd tuxmath tuxpaint tuxtype
+	gstreamer-ffmpeg gstreamer1-libav httpd tuxmath tuxpaint tuxtype2
 
 # accumulate the manual entries for selected programs already installed
 yum reinstall -y tree epiphany nano gsettings yum

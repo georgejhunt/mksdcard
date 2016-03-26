@@ -48,7 +48,7 @@ BOOTPROTO=dhcp
 ONBOOT=yes
 DEVICE=wlan0
 EOF
-systemctl enable hostapd
+systemctl disable hostapd
 fi
 
 # If there is a USB dongle added, attach the dhclient to it

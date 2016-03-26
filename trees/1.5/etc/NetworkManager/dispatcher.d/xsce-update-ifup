@@ -18,7 +18,7 @@ if [[ "$updown" = "up" && -f /etc/xsce/openvpn_allowed ]]; then
   if [ ! -z $gateway ]; then
    	ping -c 2  10.8.0.1
 	  if [ $? -ne 0 ]; then
-	    /usr/bin/systemctl restart openvpn@xscenet.service
+	    /usr/bin/systemctl start openvpn@xscenet.service
     fi
   fi
 fi
