@@ -22,7 +22,7 @@ auto_size(){
 		  blocks4k=`e2fsck -n $PARTITION 2>/dev/null|grep blocks|cut -f5 -d" "|cut -d/ -f2`
 		  #pick up the ending sector of partition that is just before the last
 		  sectors=$(( start - 1 ))
-		  total_sectors=$(( (blocks4k * 8) + sectors +2000))
+		  total_sectors=$(( (blocks4k * 8) + sectors +20000))
 }
 
 resize_image()
